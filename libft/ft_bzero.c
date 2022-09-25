@@ -10,6 +10,7 @@ void	ft_bzero(void *s, size_t n)
 		*(char *)(s + i) = '\0';
 		i++;
 	}
+	return (*s);
 }
 
 #include <stdlib.h>
