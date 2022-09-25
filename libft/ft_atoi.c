@@ -40,6 +40,6 @@ int	ft_atoi(char *str)
 int main(int ac, char **av)
 {
 	printf("our atoi : %d\n" ,ft_atoi(av[1]));
-	printf("real atoi : %d \n" , atoi(av[1]));
+	printf("real atoi : %d\n" , atoi(av[1]));
 	return (0);
 }
