@@ -1,3 +1,4 @@
+#include "libft.h"
 
 static int checkspace(char h)
 {
@@ -6,7 +7,7 @@ static int checkspace(char h)
 	return (0);
 }
 
-int ft_atoi(char *str)
+int ft_atoi(const char *str)
 {
 	int i;
 	int c;
@@ -17,6 +18,8 @@ int ft_atoi(char *str)
 	num = 0;
 	while (str[i] != '\0' && checkspace(str[i]))
 		i++;
+	if (str == '\0')
+		return (0);
 	if (str[i] != '\0' && (str[i] == '-' || str[i] == '+'))
 	{
 		if (str[i] == '-')
