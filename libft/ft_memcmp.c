@@ -20,23 +20,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-
-
-
-#include<stdio.h>
-#include<string.h>
-
-int main(void)
-{
-	char a[6] = "Ahmed";
-	char b[6] = "Nadir";
-	char s[6] = "Ahmed";
-	char d[6] = "Nadir";
-	printf("dest is: %s , %s\n", a , s);
-	int ret = ft_memcmp(a,s,5);
-	int rett = memcmp(b,d,5);
-	printf("Our fun says....  : %s, %d\n", b , ret);
-	printf("Original  says.... : %s , %d \n", d , rett);
-	return(0);
-
-}

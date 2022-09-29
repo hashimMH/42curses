@@ -21,21 +21,3 @@ void *ft_memmove(void *dst, const void *src, size_t len)
 	}
 	return (tem1);
 }
-
-#include<stdio.h>
-#include<string.h>
-
-int main(void)
-{
-	char a[6] = "Ahmed";
-	char b[6] = "Nadirr";
-	char s[6] = "Ahmed";
-	char d[6] = "Nadirr";
-	printf("dest is: %s , %s\n", a , s);
-	char *ret = ft_memmove(a,b,3);
-	char *rett = memmove(s,d,3);
-	printf("Our fun says....  : %s, %s\n", b , ret);
-	printf("Original  says.... : %s , %s \n", d , rett);
-	return(0);
-
-}

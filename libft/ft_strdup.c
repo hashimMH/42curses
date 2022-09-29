@@ -1,7 +1,6 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
 	char	*dp;
 	int		i;
@@ -18,15 +17,4 @@ char	*ft_strdup(char *src)
 	}
 	dp[i] = '\0';
 	return (dp);
-}
-
-int main()
-{
-	char *st;
-	char *sp;
-
-	st = "hash";
-	sp = ft_strdup(st);
-	printf("%s %s", st , sp);
-	return(0);
 }

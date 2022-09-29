@@ -6,11 +6,11 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 14:34:45 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/09/23 19:00:54 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:10:23 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
 int	*ft_tolower(int c)
 {

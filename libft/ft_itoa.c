@@ -29,7 +29,7 @@ static char *ft_itoa(int n)
 
 	b = n;
 	i = 0;
-	*a = (char *)malloc(sizeof(n));
+	a = (char *)malloc(sizeof(n));
 	if (sizeof(n) == 0)
 		return (NULL);
 	a = ft_putnbr(n);

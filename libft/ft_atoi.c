@@ -18,7 +18,7 @@ int ft_atoi(const char *str)
 	num = 0;
 	while (str[i] != '\0' && checkspace(str[i]))
 		i++;
-	if (str == '\0')
+	if (str == 0)
 		return (0);
 	if (str[i] != '\0' && (str[i] == '-' || str[i] == '+'))
 	{
@@ -32,14 +32,4 @@ int ft_atoi(const char *str)
 		i++;
 	}
 	return (c * num);
-}
-
-#include <stdlib.h>
-#include <stdio.h>
-
-int main(int ac, char **av)
-{
-	printf("our atoi : %d\n", ft_atoi(av[1]));
-	printf("real atoi  : %d\n", atoi(av[1]));
-	return (0);
 }

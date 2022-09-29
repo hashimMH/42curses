@@ -1,12 +1,4 @@
-
-// char *ft_strchr(const char *s, int c)
-// {
-
-// }
-
-
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
 char	*ft_strchr(char *s, int c)
 {
@@ -20,22 +12,4 @@ char	*ft_strchr(char *s, int c)
 		i++;
 	}
 	return (0);
-}
-
-#include <stdio.h>
-#include <string.h>
-
-int main () {
-    char str[] = "http://www.tutorialspoint.com";
-    char ch = '.';
-    char *ret;
-
-   ret = strchr(str, ch);
-
-   printf("String after |%c| is - |%s|\n", ch, ret);
-
-   ret = ft_strchr(str, ch);
-   printf("String after |%c| is - |%s|\n", ch, ret);
-   
-   return(0);
 }

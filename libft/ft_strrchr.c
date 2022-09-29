@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <string.h>
+
 
 int	check(int i, char *s, int c)
 {
@@ -24,20 +23,4 @@ char	*ft_strrchr(const char *s, int c)
 		i++;
 	}
 	return (0);
-}
-
-int	main (){
-	char str[] = "http://www.tutorialspoint.com";
-	char ch = '.';
-	char *ret;
-
-	ret = strrchr(str, ch);
-
-	printf("String after |%c| is - |%s|\n", ch, ret);
-	
-	ret = ft_strrchr(str, ch);
-
-	printf("String after |%c| is - |%s|\n", ch, ret);
-   
-	return(0);
 }
