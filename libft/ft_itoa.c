@@ -1,37 +1,54 @@
 #include "libft.h"
 
-static char *ft_putnbr(int n)
+static char csign(int nb)
 {
-	int i;
-	char *a;
+	char c;
+	c = '+';
+	if (nb < 0)
+		c = '-';
+	return (c);
+}
 
+static char *nbr(int n)
+{
+	char *a;
+	int	i;
+	char c;
+
+	c = csign(n);
+	a = NULL;
 	i = 0;
-	if (n < 0)
+	while (n >= 10)
 	{
-		a[i] = "-";
-		i++;
-	}
-	else
-	{
-		if (n >= 10)
-			ft_putnbr(n / 10);
 		a[i] = n % 10 + '0';
+		n = n / 10;
 		i++;
 	}
+	a[i++] = n;
+	if(c == '-')
+		a[i++] = c;
+	a[i] = 0;
 	return (a);
 }
 
-static char *ft_itoa(int n)
+char *ft_itoa(int n)
 {
 	char *a;
+	char *temp;
 	int i;
-	int b;
-
-	b = n;
-	i = 0;
-	a = (char *)malloc(sizeof(n));
-	if (sizeof(n) == 0)
+	int j;
+	
+	j = 0;
+	a = nbr(n);
+	i = ft_strlen(a);
+	if (sizeof(n) == 0 || n == -2147483648)
 		return (NULL);
-	a = ft_putnbr(n);
-	return (a);
+	temp = (char *)malloc(i + 1);
+	while(i > 0)
+	{
+		temp[j] = a[i];
+		i--;
+		j++;
+	}
+	return (temp);
 }

@@ -6,14 +6,14 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 14:28:51 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/09/23 18:59:43 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:29:51 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include <stdio.h>
 
-int	*ft_toupper(int c)
+int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		c = c - 32;

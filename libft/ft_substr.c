@@ -7,8 +7,8 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 	size_t i;
 	size_t j;
 
-	i = *(size_t *)start;
-	sr = s;
+	i = start;
+	sr = (char *)s;
 	temp = (char *)malloc(len);
 	if(len < 1)
 		return(NULL);
