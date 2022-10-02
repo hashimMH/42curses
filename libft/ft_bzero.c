@@ -1,25 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/02 17:21:31 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/02 17:21:36 by hmohamed         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
 	size_t	i;
+	char	*sr;
 
 	i = 0;
+	sr = (char *)s;
 	while (i < n)
 	{
-		*(char *)(s + i) = '\0';
+		sr[i] = '\0';
 		i++;
 	}
 	return (*s);
 }
-
-#include <stdlib.h>
-#include <string.h>
-
-int main( void )
-  {
-    char buffer[80];
-
-    bzero( buffer, 80 );
-    return EXIT_SUCCESS;
-  }

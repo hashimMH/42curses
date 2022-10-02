@@ -1,4 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/02 17:32:11 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/02 17:32:29 by hmohamed         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "libft.h"
 
 int	check(int i, char *s, int c)
 {
@@ -13,14 +25,18 @@ int	check(int i, char *s, int c)
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	int		i;
+	char	*temp;
 
 	i = 0;
+	temp = (char *)s;
 	while (s[i] != '\0')
 	{
-		if (s[i] == c && !check(i + 1, (char *)s, c))
-			return ((char *)(s + i));
+		if (temp[i] == c && !check(i + 1, temp, c))
+			return (&temp[i]);
 		i++;
 	}
+	if (c == '\0' && temp[i] == '\0')
+		return (&temp[i]);
 	return (0);
 }
