@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:31:29 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/02 17:31:46 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/02 19:34:57 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	a = 0;
 	while (s[a] != '\0')
 		a++;
-	if (a <= 0)
+	sr = (char *)malloc(sizeof(char) * a + 1);
+	if (sr == NULL)
 		return (NULL);
-	sr = (char *)malloc(sizeof(char) * a);
 	a = 0;
 	while (s[a] != '\0')
 	{
 		sr[a] = f(a, s[a]);
 		a++;
 	}
+	sr[a] = 0;
 	return (sr);
 }
