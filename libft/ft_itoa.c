@@ -6,62 +6,50 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:24:01 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/02 18:39:10 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:04:00 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	char	csign(int nb)
+static size_t count(int n)
 {
-	char	c;
+	size_t i;
 
-	c = '+';
-	if (nb < 0)
-		c = '-';
-	return (c);
-}
-
-static char	*nbr(int n)
-{
-	char	*a;
-	int		i;
-	char	c;
-
-	c = csign(n);
-	a = NULL;
-	if (n < 0)
-		n = -1 * n;
-	i = 0;
-	while (n >= 10)
+	if (n > 0)
+		i = 0;
+	else
+		i = 1;
+	while (n)
 	{
-		a[i] = n % 10 + '0';
-		n = n / 10;
+		n /= 10;
 		i++;
 	}
-	a[i++] = n + '0';
-	if (c == '-')
-		a[i++] = c;
-	a[i] = 0;
-	return (a);
+	return (i);
 }
 
-char	*ft_itoa(int n)
+char *ft_itoa(int n)
 {
-	char	*a;
-	char	*temp;
-	int		i;
-	int		j;
+	char *temp;
+	long num;
+	size_t i;
 
-	j = 0;
-	a = nbr(n);
-	i = ft_strlen(a);
-	temp = (char *)malloc(i * sizeof(char) + 1);
-	while (i > 0)
+	i = count(n);
+	num = n;
+	num = num > 0 ? num : -num;
+	if (!(temp = (char *)malloc(i + 1)))
+		return (0);
+	temp[i] = '\0';
+	i--;
+	while (num > 0)
 	{
-		temp[j] = a[i];
+		temp[i] = num % 10 + '0';
 		i--;
-		j++;
+		num /= 10;
 	}
+	if (i == 0 && temp[1] == '\0')
+		temp[i] = '0';
+	else if (i == 0 && temp[1] != '\0')
+		temp[i] = '-';
 	return (temp);
 }
