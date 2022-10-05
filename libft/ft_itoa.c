@@ -6,15 +6,15 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:24:01 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/03 15:04:00 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/05 20:20:16 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t count(int n)
+static	size_t	count(int n)
 {
-	size_t i;
+	size_t	i;
 
 	if (n > 0)
 		i = 0;
@@ -28,11 +28,11 @@ static size_t count(int n)
 	return (i);
 }
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	char *temp;
-	long num;
-	size_t i;
+	char	*temp;
+	long	num;
+	size_t	i;
 
 	i = count(n);
 	num = n;
