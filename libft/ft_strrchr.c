@@ -6,13 +6,13 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:32:11 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/02 17:32:29 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/06 15:58:31 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	check(int i, char *s, int c)
+int check(int i, char *s, int c)
 {
 	while (s[i] != '\0')
 	{
@@ -23,16 +23,16 @@ int	check(int i, char *s, int c)
 	return (0);
 }
 
-char	*ft_strrchr(const char *s, int c)
+char *ft_strrchr(const char *s, int c)
 {
-	int		i;
-	char	*temp;
+	int i;
+	char *temp;
 
 	i = 0;
 	temp = (char *)s;
 	while (s[i] != '\0')
 	{
-		if (temp[i] == c && !check(i + 1, temp, c))
+		if (temp[i] == (unsigned char)c && !check(i + 1, temp, c))
 			return (&temp[i]);
 		i++;
 	}
