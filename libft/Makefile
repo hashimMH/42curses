@@ -37,7 +37,8 @@ SRCS = ft_memset.c \
 			  ft_putendl_fd.c \
 			  ft_putnbr_fd.c \
 			  ft_striteri.c \
-			  ft_lstnew.c \
+
+SRCB =	 ft_lstnew.c \
 			  ft_lstadd_front.c \
 			  ft_lstsize.c \
 			  ft_lstlast.c \
@@ -82,7 +83,9 @@ OBJS = ft_memset.o \
 			  ft_putendl_fd.o \
 			  ft_putnbr_fd.o \
 			  ft_striteri.o \
-			  ft_lstnew.o \
+			
+
+OBJSB =   ft_lstnew.o \
 			  ft_lstadd_front.o \
 			  ft_lstsize.o \
 			  ft_lstlast.o \
@@ -105,10 +108,15 @@ $(NAME):
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
+bonus: $(BONUS)
+		$(CC) $(FLAGS) -c $(SRCB)
+		ar rc $(NAME) $(OBJSB)
+		ranlib $(NAME)
+
 clean:
-	rm -rf $(OBJS)
+	rm -f $(OBJS) $(OBJSB)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) 
 
 re: fclean all
