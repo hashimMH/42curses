@@ -6,16 +6,16 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:27:29 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/03 13:40:33 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:50:29 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int w_len(const char *str, char s)
+static int	w_len(const char *str, char s)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -33,10 +33,10 @@ static int w_len(const char *str, char s)
 	return (i);
 }
 
-static char *wdup(const char *str, int i, int j)
+static char	*wdup(const char *str, int i, int j)
 {
-	char *s;
-	int a;
+	char	*s;
+	int		a;
 
 	a = 0;
 	s = (char *)malloc((j - i + 1) * sizeof(char));
@@ -50,12 +50,12 @@ static char *wdup(const char *str, int i, int j)
 	return (s);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char **temp;
-	size_t i;
-	int j;
-	int a;
+	char	**temp;
+	size_t	i;
+	int		j;
+	int		a;
 
 	i = 0;
 	j = 0;
