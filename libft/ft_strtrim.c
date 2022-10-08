@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:32:39 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/02 20:59:42 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/08 16:14:53 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,20 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	a = 0;
-	j = ft_strlen(s1);
-	while (s1[i] && cchr(s1[i], set))
-		i++;
-	while (j > i && cchr(s1[j - 1], set))
-		j--;
-	temp = (char *)malloc(sizeof(char) * (j - i) + 1);
-	while (i < j)
+	if (s1 && set)
 	{
-		temp[a] = s1[i];
-		a++;
-		i++;
+		j = ft_strlen(s1);
+		while (s1[i] && cchr(s1[i], set))
+			i++;
+		while (j > i && cchr(s1[j - 1], set))
+			j--;
+		temp = (char *)malloc(sizeof(char) * (j - i) + 1);
+		if (!temp)
+			return (NULL);
+		while (i < j)
+			temp[a++] = s1[i++];
+		temp[a] = 0;
+		return (temp);
 	}
-	temp[a] = 0;
-	return (temp);
+	return (0);
 }

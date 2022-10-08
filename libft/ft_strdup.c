@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:28:52 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/02 17:28:53 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:45:42 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_strdup(const char *src)
 	while (src[i])
 		i++;
 	dp = (char *)malloc(i * sizeof(char) + 1);
+	if (!dp)
+		return (NULL);
 	i = 0;
 	while (src[i])
 	{

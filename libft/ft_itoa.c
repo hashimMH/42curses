@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:24:01 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/07 14:07:35 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/08 18:17:50 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,12 @@ char	*ft_itoa(int n)
 	size_t	i;
 
 	i = count(n);
-	num = n;
-	if (num > 0)
-		num = 1 * num;
-	else
-		num = -num;
 	temp = (char *)malloc(i + 1);
 	if (!temp)
-		return (0);
+		return (NULL);
+	num = n;
+	if (num < 0)
+		num = -num;
 	temp[i--] = '\0';
 	while (num > 0)
 	{

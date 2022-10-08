@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:27:29 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/07 13:50:29 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/08 18:23:36 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	w_len(const char *str, char s)
 	return (i);
 }
 
-static char	*wdup(const char *str, int i, int j)
+static char	*wdup(const char *str, int i, int j, int *p)
 {
 	char	*s;
 	int		a;
@@ -47,6 +47,7 @@ static char	*wdup(const char *str, int i, int j)
 		i++;
 	}
 	s[a] = '\0';
+	*p = -1;
 	return (s);
 }
 
@@ -58,23 +59,21 @@ char	**ft_split(char const *s, char c)
 	int		a;
 
 	i = 0;
-	j = 0;
+	j = -1;
 	a = -1;
+	if (!s)
+		return (NULL);
 	temp = malloc((w_len(s, c) + 1) * sizeof(char *));
-	if (!s || temp == NULL)
+	if (temp == NULL)
 		return (0);
 	while (i <= ft_strlen(s))
 	{
 		if (s[i] != c && a < 0)
 			a = i;
 		else if ((s[i] == c || s[i] == '\0') && a >= 0)
-		{
-			temp[j] = wdup(s, a, i);
-			j++;
-			a = -1;
-		}
+			temp[++j] = wdup(s, a, i, &a);
 		i++;
 	}
-	temp[j] = 0;
+	temp[++j] = 0;
 	return (temp);
 }

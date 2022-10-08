@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:25:21 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/07 13:45:42 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:13:10 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	tem1 = dst;
 	tem2 = src;
 	i = 0;
+	if (src == dst || !n)
+		return (dst);
 	while (i < n)
 	{
 		tem1[i] = tem2[i];

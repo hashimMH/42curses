@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:20:34 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/02 17:21:22 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/08 18:29:54 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static	int	checkspace(char h)
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	c;
-	int	num;
+	int					i;
+	int					c;
+	unsigned long long	num;
 
 	i = 0;
 	c = 1;
@@ -34,14 +34,15 @@ int	ft_atoi(const char *str)
 	if (str == 0)
 		return (0);
 	if (str[i] != '\0' && (str[i] == '-' || str[i] == '+'))
-	{
-		if (str[i] == '-')
+		if (str[i++] == '-')
 			c = -1;
-		i++;
-	}
 	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
 	{
 		num = num * 10 + (str[i] - '0');
+		if (num > 9223372036854775807 && c == 1)
+			return (-1);
+		else if (num > 9223372036854775807 && c == -1)
+			return (0);
 		i++;
 	}
 	return (c * num);
