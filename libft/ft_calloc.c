@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:21:46 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/09 19:41:26 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/09 20:54:44 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*str;
 
-	if (count >= SIZE_MAX || size >= SIZE_MAX)
+	if (size != 0 && count > SIZE_MAX / size)
 		return (NULL);
 	str = malloc(count * size);
 	if (!str)
