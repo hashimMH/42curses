@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:27:18 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/08 16:59:11 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/16 13:01:51 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putstr_fd(char *s, int fd)
 	int	a;
 
 	a = 0;
-	if (s && fd)
+	if (s)
 	{
 		while (s[a] != '\0')
 		{

@@ -97,22 +97,15 @@ OBJSB =   ft_lstnew.o \
 
 FLAGS = -Wall -Wextra -Werror
 
-CC = gcc
-
-HEADER = libft.h
+CC = cc
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(FLAGS) -c $(SRCS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
-
-bonus: $(BONUS)
-		$(CC) $(FLAGS) -c $(SRCB)
-		ar rc $(NAME) $(OBJSB)
-		ranlib $(NAME)
-
+$(NAME): $(OBJS)
+	ar rc $(NAME) $(OBJS) 
+	
+bonus: $(OBJSB)
+	ar rc $(NAME) $(OBJSB)
 clean:
 	rm -f $(OBJS) $(OBJSB)
 

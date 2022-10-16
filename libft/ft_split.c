@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:27:29 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/08 18:23:36 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/16 13:08:46 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 	int		j;
 	int		a;
+	size_t	slen;
 
+	slen = ft_strlen(s);
 	i = 0;
 	j = -1;
 	a = -1;
@@ -66,7 +68,7 @@ char	**ft_split(char const *s, char c)
 	temp = malloc((w_len(s, c) + 1) * sizeof(char *));
 	if (temp == NULL)
 		return (0);
-	while (i <= ft_strlen(s))
+	while (i <= slen)
 	{
 		if (s[i] != c && a < 0)
 			a = i;
