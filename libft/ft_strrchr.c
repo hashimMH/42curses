@@ -6,13 +6,13 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:32:11 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/07 13:47:35 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/16 13:17:13 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	check(int i, char *s, int c)
+static int	check(int i, char *s, int c)
 {
 	while (s[i] != '\0')
 	{
