@@ -95,7 +95,7 @@ OBJSB =   ft_lstnew.o \
 			  ft_lstiter.o \
 			  ft_lstmap.o \
 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 CC = cc
 
