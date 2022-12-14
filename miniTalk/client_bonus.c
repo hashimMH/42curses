@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 17:20:34 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/11/15 13:55:25 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/12/11 18:23:36 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/12/14 20:41:38 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+
+# include <unistd.h>
+# include <signal.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 static	int	checkspace(char h)
 {
@@ -46,4 +50,50 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (c * num);
+}
+
+void	sendbit(int pid, char c)
+{
+	int		i;
+	int		bit;
+
+	i = 0;
+	bit = 0;
+	while (bit < 8)
+	{
+		i = 1 & (c >> bit);
+		//printf("%i \n", i);
+		if (i != 0)
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		bit++;
+		usleep(100);
+	}
+}
+
+void	handler(int signal)
+{
+	if (signal)
+		write(1, "message received", 17);
+}
+
+int	main(int ac, char **av)
+{
+	int	pid;
+	int	i;
+
+	i = 0;
+	pid = 0;
+	if (ac == 3)
+	{
+		pid = ft_atoi(av[1]);
+		while (av[2][i])
+		{
+			sendbit(pid, av[2][i]);
+			i++;
+		}
+		kill(pid, SIGINT);
+		signal(SIGINT, handler);
+	}
 }
