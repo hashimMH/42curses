@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:23:43 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/14 20:50:40 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/12/14 21:06:55 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	handler(int signal, siginfo_t *info, void *context)
 void	shandler(int signal)
 {
 	if (signal)
-		kill(signalpid, SIGINT);
+		kill(signalpid, SIGTERM);
 }
 
 int	main(int ac, char **av)
@@ -56,7 +56,7 @@ int	main(int ac, char **av)
 	{
 		sigaction(SIGUSR1, &sa, NULL);
 		sigaction(SIGUSR2, &sa, NULL);
-		signal(SIGINT, shandler);
+		signal(SIGTERM, shandler);
 		pause();
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:23:36 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/14 20:41:38 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/12/14 21:06:29 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ int	main(int ac, char **av)
 			sendbit(pid, av[2][i]);
 			i++;
 		}
-		kill(pid, SIGINT);
-		signal(SIGINT, handler);
+		kill(pid, SIGTERM);
+		usleep(100);
+		signal(SIGTERM, handler);
 	}
 }
