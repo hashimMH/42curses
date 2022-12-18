@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:23:43 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/14 21:06:55 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/12/18 18:56:42 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	handler(int signal, siginfo_t *info, void *context)
 	static char	a;
 
 	(void)context;
+	signalpid = info->si_pid;
 	if (signal == SIGUSR1)
 	{
 		a |= (0x01 << bit);
@@ -31,17 +32,12 @@ void	handler(int signal, siginfo_t *info, void *context)
 	//  printf("bit = %d", bit);
 	if (bit == 8)
 	{
+		if (a == 0)
+			kill(info->si_pid, SIGUSR2);
 		write(1, &a, 1);
 		bit = 0;
 		a = 0;
 	}
-	signalpid = info->si_pid;
-}
-
-void	shandler(int signal)
-{
-	if (signal)
-		kill(signalpid, SIGTERM);
 }
 
 int	main(int ac, char **av)
@@ -56,7 +52,6 @@ int	main(int ac, char **av)
 	{
 		sigaction(SIGUSR1, &sa, NULL);
 		sigaction(SIGUSR2, &sa, NULL);
-		signal(SIGTERM, shandler);
 		pause();
 	}
 }

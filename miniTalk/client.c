@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:23:36 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/13 12:33:18 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/12/17 15:20:16 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,6 @@
 # include <signal.h>
 # include <stdlib.h>
 # include <stdio.h>
-
-static	int	checkspace(char h)
-{
-	if (h == '\f' || h == '\t'
-		|| h == ' ' || h == '\n' || h == '\r' || h == '\v')
-		return (1);
-	return (0);
-}
 
 int	ft_atoi(const char *str)
 {
@@ -33,8 +25,6 @@ int	ft_atoi(const char *str)
 	i = 0;
 	c = 1;
 	num = 0;
-	while (str[i] != '\0' && checkspace(str[i]))
-		i++;
 	if (str == 0)
 		return (0);
 	if (str[i] != '\0' && (str[i] == '-' || str[i] == '+'))
@@ -43,12 +33,14 @@ int	ft_atoi(const char *str)
 	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
 	{
 		num = num * 10 + (str[i] - '0');
-		if (num > 9223372036854775807 && c == 1)
-			return (-1);
-		else if (num > 9223372036854775807 && c == -1)
+		if (num > 2147483647 && c == 1)
+			return (0);
+		else if (num > 2147483647 && c == -1)
 			return (0);
 		i++;
 	}
+	if (str[i] != '\0' || (c == -1))
+		return (0);
 	return (c * num);
 }
 
@@ -82,6 +74,11 @@ int	main(int ac, char **av)
 	if (ac == 3)
 	{
 		pid = ft_atoi(av[1]);
+		if (pid == 0)
+		{
+			write(1, "error", 5);
+			return (0);
+		}
 		while (av[2][i])
 		{
 			sendbit(pid, av[2][i]);
