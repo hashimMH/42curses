@@ -6,15 +6,11 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:23:36 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/17 15:20:16 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/12/19 12:44:46 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <stdio.h>
+#include "miniTalk.h"
 
 int	ft_atoi(const char *str)
 {
@@ -54,7 +50,6 @@ void	sendbit(int pid, char c)
 	while (bit < 8)
 	{
 		i = 1 & (c >> bit);
-		//printf("%i \n", i);
 		if (i != 0)
 			kill(pid, SIGUSR1);
 		else

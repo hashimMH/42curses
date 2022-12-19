@@ -6,16 +6,34 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:23:43 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/18 18:56:42 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/12/19 14:01:27 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <signal.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "miniTalk.h"
 
-int	signalpid;
+void	ft_putnbr_fd(int n, int fd)
+{
+	char	a;
+
+	if (n == -2147483648)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		write(fd, &"8", 1);
+	}
+	else if (n < 0)
+	{
+		write(fd, &"-", 1);
+		ft_putnbr_fd(n / (-1), fd);
+	}
+	else
+	{
+		if (n >= 10)
+			ft_putnbr_fd(n / 10, fd);
+		a = n % 10 + '0';
+		write(fd, &a, 1);
+	}
+}
 
 void	handler(int signal, siginfo_t *info, void *context)
 {
@@ -23,13 +41,11 @@ void	handler(int signal, siginfo_t *info, void *context)
 	static char	a;
 
 	(void)context;
-	signalpid = info->si_pid;
 	if (signal == SIGUSR1)
 	{
 		a |= (0x01 << bit);
 	}
 	bit++;
-	//  printf("bit = %d", bit);
 	if (bit == 8)
 	{
 		if (a == 0)
@@ -47,7 +63,7 @@ int	main(int ac, char **av)
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = handler;
 	(void)av;
-	printf("pid :  %d\n", getpid());
+	ft_putnbr_fd(getpid(), 1);
 	while (ac == 1)
 	{
 		sigaction(SIGUSR1, &sa, NULL);

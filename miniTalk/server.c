@@ -6,14 +6,34 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:23:43 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/14 20:07:45 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/12/19 14:01:35 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <signal.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "miniTalk.h"
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	char	a;
+
+	if (n == -2147483648)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		write(fd, &"8", 1);
+	}
+	else if (n < 0)
+	{
+		write(fd, &"-", 1);
+		ft_putnbr_fd(n / (-1), fd);
+	}
+	else
+	{
+		if (n >= 10)
+			ft_putnbr_fd(n / 10, fd);
+		a = n % 10 + '0';
+		write(fd, &a, 1);
+	}
+}
 
 void	handler(int signal)
 {
@@ -36,7 +56,7 @@ void	handler(int signal)
 int	main(int ac, char **av)
 {
 	(void)av;
-	printf("pid :  %d\n", getpid());
+	ft_putnbr_fd(getpid(), 1);
 	while (ac == 1)
 	{
 		signal(SIGUSR1, handler);
