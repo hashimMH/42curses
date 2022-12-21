@@ -6,13 +6,13 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:23:36 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/19 12:44:46 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:27:22 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniTalk.h"
+#include "minitalk.h"
 
-int	ft_atoi(const char *str)
+static int	ft_atoi(const char *str)
 {
 	int					i;
 	int					c;
@@ -40,7 +40,7 @@ int	ft_atoi(const char *str)
 	return (c * num);
 }
 
-void	sendbit(int pid, char c)
+static void	sendbit(int pid, char c)
 {
 	int		i;
 	int		bit;
@@ -71,7 +71,7 @@ int	main(int ac, char **av)
 		pid = ft_atoi(av[1]);
 		if (pid == 0)
 		{
-			write(1, "error", 5);
+			write(2, "error", 5);
 			return (0);
 		}
 		while (av[2][i])
@@ -79,5 +79,9 @@ int	main(int ac, char **av)
 			sendbit(pid, av[2][i]);
 			i++;
 		}
+	}
+	else
+	{
+		write(2, "error", 5);
 	}
 }

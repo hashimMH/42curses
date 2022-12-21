@@ -6,13 +6,13 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:23:43 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/19 14:01:35 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:27:14 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniTalk.h"
+#include "minitalk.h"
 
-void	ft_putnbr_fd(int n, int fd)
+static void	ft_putnbr_fd(int n, int fd)
 {
 	char	a;
 
@@ -35,7 +35,7 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 }
 
-void	handler(int signal)
+static void	handler(int signal)
 {
 	static int	bit;
 	static char	a;

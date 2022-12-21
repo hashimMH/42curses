@@ -6,13 +6,13 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:23:43 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/19 14:01:27 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:27:11 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniTalk.h"
+#include "minitalk.h"
 
-void	ft_putnbr_fd(int n, int fd)
+static void	ft_putnbr_fd(int n, int fd)
 {
 	char	a;
 
@@ -35,7 +35,7 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 }
 
-void	handler(int signal, siginfo_t *info, void *context)
+static void	handler(int signal, siginfo_t *info, void *context)
 {
 	static int	bit;
 	static char	a;
@@ -64,6 +64,7 @@ int	main(int ac, char **av)
 	sa.sa_sigaction = handler;
 	(void)av;
 	ft_putnbr_fd(getpid(), 1);
+	write(1, "\n", 1);
 	while (ac == 1)
 	{
 		sigaction(SIGUSR1, &sa, NULL);

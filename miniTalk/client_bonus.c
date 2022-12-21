@@ -6,13 +6,13 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:23:36 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/19 12:44:20 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:27:19 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniTalk.h"
+#include "minitalk.h"
 
-int	ft_atoi(const char *str)
+static int	ft_atoi(const char *str)
 {
 	int					i;
 	int					c;
@@ -40,7 +40,7 @@ int	ft_atoi(const char *str)
 	return (c * num);
 }
 
-void	sendbit(int pid, char c)
+static void	sendbit(int pid, char c)
 {
 	int		i;
 	int		bit;
@@ -59,7 +59,7 @@ void	sendbit(int pid, char c)
 	}
 }
 
-void	sendend(int pid)
+static void	sendend(int pid)
 {
 	int		bit;
 
@@ -72,7 +72,7 @@ void	sendend(int pid)
 	}
 }
 
-void	handler(int signal)
+static void	handler(int signal)
 {
 	if (signal == SIGUSR2)
 		write(1, "message received\n", 18);
@@ -87,9 +87,16 @@ int	main(int ac, char **av)
 	i = 0;
 	pid = 0;
 	signal(SIGUSR2, handler);
+	if (ac != 3)
+		write(2, "error", 5);
 	while (ac == 3)
 	{
 		pid = ft_atoi(av[1]);
+		if (pid == 0)
+		{
+			write(2, "error", 5);
+			return (0);
+		}
 		while (av[2][i])
 		{
 			sendbit(pid, av[2][i]);
