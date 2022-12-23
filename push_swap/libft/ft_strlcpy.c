@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/23 16:29:17 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/02 17:31:04 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/02 17:31:15 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	setnum(int num)
+size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 {
-	t_list	a;
-	
-	
-}
+	size_t	i;
 
-int	main(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	if (ac <= 1)
-		return (0);
-	while (i < ac)
+	i = 0;
+	if (dstsize <= 0)
+		return (ft_strlen(src));
+	while (src[i] && dstsize > (i + 1))
 	{
-		
+		dest[i] = src[i];
+		i++;
 	}
+	dest[i] = '\0';
+	while (src[i])
+		i++;
+	return (i);
 }

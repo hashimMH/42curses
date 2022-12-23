@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/23 16:29:17 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/02 17:27:06 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/12/19 14:00:03 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	setnum(int num)
+void	ft_putnbr_fd(int n, int fd)
 {
-	t_list	a;
-	
-	
-}
+	char	a;
 
-int	main(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	if (ac <= 1)
-		return (0);
-	while (i < ac)
+	if (n == -2147483648)
 	{
-		
+		ft_putnbr_fd(n / 10, fd);
+		write(fd, &"8", 1);
+	}
+	else if (n < 0)
+	{
+		write(fd, &"-", 1);
+		ft_putnbr_fd(n / (-1), fd);
+	}
+	else
+	{
+		if (n >= 10)
+			ft_putnbr_fd(n / 10, fd);
+		a = n % 10 + '0';
+		write(fd, &a, 1);
 	}
 }

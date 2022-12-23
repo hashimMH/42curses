@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/23 16:29:17 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/02 17:26:45 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/02 17:26:49 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	setnum(int num)
+void	ft_putchar_fd(char c, int fd)
 {
-	t_list	a;
-	
-	
-}
-
-int	main(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	if (ac <= 1)
-		return (0);
-	while (i < ac)
-	{
-		
-	}
+	write(fd, &c, 1);
 }

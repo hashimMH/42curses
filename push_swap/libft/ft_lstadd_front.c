@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/23 16:29:17 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/05 17:16:21 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/05 20:19:03 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	setnum(int num)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list	a;
-	
-	
-}
-
-int	main(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	if (ac <= 1)
-		return (0);
-	while (i < ac)
+	if (!new)
+		return ;
+	if (!lst)
 	{
-		
+		*lst = new;
+		return ;
 	}
+	new->next = *lst;
+	*lst = new;
 }

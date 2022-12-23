@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/23 16:29:17 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/02 17:31:29 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/08 17:01:49 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	setnum(int num)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	t_list	a;
-	
-	
-}
+	unsigned int	a;
+	char			*sr;
 
-int	main(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	if (ac <= 1)
-		return (0);
-	while (i < ac)
+	a = 0;
+	if (s && f)
 	{
-		
+		while (s[a] != '\0')
+			a++;
+		sr = (char *)malloc(sizeof(char) * a + 1);
+		if (sr == NULL)
+			return (NULL);
+		a = 0;
+		while (s[a] != '\0')
+		{
+			sr[a] = f(a, s[a]);
+			a++;
+		}
+		sr[a] = 0;
+		return (sr);
 	}
+	return (0);
 }

@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/23 16:29:17 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/02 17:25:21 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/08 15:13:10 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	setnum(int num)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	t_list	a;
-	
-	
-}
+	size_t		i;
+	char		*tem1;
+	const char	*tem2;
 
-int	main(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	if (ac <= 1)
-		return (0);
-	while (i < ac)
+	tem1 = dst;
+	tem2 = src;
+	i = 0;
+	if (src == dst || !n)
+		return (dst);
+	while (i < n)
 	{
-		
+		tem1[i] = tem2[i];
+		i++;
 	}
+	return (tem1);
 }

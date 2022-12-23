@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/23 16:29:17 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/05 17:24:35 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/09 16:46:30 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	setnum(int num)
-{
-	t_list	a;
-	
-	
-}
-
-int	main(int ac, char **av)
+int	ft_lstsize(t_list *lst)
 {
 	int	i;
 
-	i = 1;
-	if (ac <= 1)
-		return (0);
-	while (i < ac)
+	i = 0;
+	while (lst)
 	{
-		
+		i++;
+		lst = lst->next;
 	}
+	return (i);
 }

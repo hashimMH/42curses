@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/23 16:29:17 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/06 13:27:59 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/08 18:26:42 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	setnum(int num)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	a;
-	
-	
-}
+	t_list	*temp;
+	t_list	*list;
 
-int	main(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	if (ac <= 1)
-		return (0);
-	while (i < ac)
+	if (!lst)
+		return ;
+	if (!del)
+		return ;
+	list = *lst;
+	while (list)
 	{
-		
+		temp = list->next;
+		ft_lstdelone(list, del);
+		list = temp;
 	}
+	*lst = NULL;
 }

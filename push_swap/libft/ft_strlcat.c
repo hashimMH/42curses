@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/23 16:29:17 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/02 17:30:44 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/08 18:59:02 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	setnum(int num)
+size_t	ft_strlcat(char *dest, const char *src, size_t dstsize)
 {
-	t_list	a;
-	
-	
-}
+	size_t	i;
+	size_t	j;
 
-int	main(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	if (ac <= 1)
+	if (!dest && dstsize == 0)
 		return (0);
-	while (i < ac)
+	i = ft_strlen(dest);
+	j = 0;
+	if (dstsize <= ft_strlen(dest))
+		return (dstsize + ft_strlen(src));
+	while (src[j] && i < dstsize - 1)
 	{
-		
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
+	dest[i] = '\0';
+	return (ft_strlen(dest) + ft_strlen(&src[j]));
 }

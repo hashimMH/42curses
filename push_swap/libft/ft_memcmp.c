@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/23 16:29:17 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/02 17:18:07 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/07 13:47:07 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	setnum(int num)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_list	a;
-	
-	
-}
+	size_t	i;
+	char	*sr1;
+	char	*sr2;
 
-int	main(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	if (ac <= 1)
+	sr1 = (char *)s1;
+	sr2 = (char *)s2;
+	i = 0;
+	if (n == 0)
 		return (0);
-	while (i < ac)
+	while (i < n)
 	{
-		
+		if (sr1[i] != sr2[i])
+			return ((unsigned char)sr1[i] - (unsigned char)sr2[i]);
+		i++;
 	}
+	return (0);
 }

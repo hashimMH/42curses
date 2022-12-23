@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/23 16:29:17 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/02 17:21:46 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/09 20:54:44 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	setnum(int num)
+void	*ft_calloc(size_t count, size_t size)
 {
-	t_list	a;
-	
-	
-}
+	void	*str;
 
-int	main(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	if (ac <= 1)
+	if (size != 0 && count > SIZE_MAX / size)
+		return (NULL);
+	str = malloc(count * size);
+	if (!str)
 		return (0);
-	while (i < ac)
-	{
-		
-	}
+	ft_bzero(str, (count * size));
+	return (str);
 }

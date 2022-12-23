@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/23 16:29:17 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/02 17:28:34 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/07 13:48:00 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	setnum(int num)
+char	*ft_strchr(const char *s, int c)
 {
-	t_list	a;
-	
-	
-}
+	int		i;
+	char	*temp;
 
-int	main(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	if (ac <= 1)
-		return (0);
-	while (i < ac)
+	temp = (char *)s;
+	i = 0;
+	while (temp[i] != '\0')
 	{
-		
+		if (temp[i] == (unsigned char)c)
+			return (&temp[i]);
+		i++;
 	}
+	if (c == '\0' && temp[i] == '\0')
+		return (&temp[i]);
+	return (0);
 }

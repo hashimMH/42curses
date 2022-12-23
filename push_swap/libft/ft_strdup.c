@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/23 16:29:17 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/02 17:28:52 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/08 15:45:42 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	setnum(int num)
+char	*ft_strdup(const char *src)
 {
-	t_list	a;
-	
-	
-}
+	char	*dp;
+	int		i;
 
-int	main(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	if (ac <= 1)
-		return (0);
-	while (i < ac)
+	i = 0;
+	while (src[i])
+		i++;
+	dp = (char *)malloc(i * sizeof(char) + 1);
+	if (!dp)
+		return (NULL);
+	i = 0;
+	while (src[i])
 	{
-		
+		dp[i] = src[i];
+		i++;
 	}
+	dp[i] = '\0';
+	return (dp);
 }
