@@ -101,8 +101,9 @@ CC = cc
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(OBJSB)
 	ar rc $(NAME) $(OBJS) 
+	ar rc $(NAME) $(OBJSB)
 	
 bonus: $(OBJSB)
 	ar rc $(NAME) $(OBJSB)

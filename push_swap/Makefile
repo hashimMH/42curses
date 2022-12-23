@@ -6,7 +6,7 @@
 #    By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/23 16:14:02 by hmohamed          #+#    #+#              #
-#    Updated: 2022/12/23 16:14:04 by hmohamed         ###   ########.fr        #
+#    Updated: 2022/12/23 16:49:31 by hmohamed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,16 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ)  -o $(NAME) 
+	make -C \libft
+	$(CC) $(CFLAGS) $(OBJ) libft/libft.a  -o $(NAME) 
+	
 
 
 clean:
 		rm -f *.o
+		make clean -C \libft
 
 fclean: clean
 		rm -f push_swap
+		make fclean -C \libft
 re: fclean all
