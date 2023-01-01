@@ -6,7 +6,7 @@
 #    By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/23 16:14:02 by hmohamed          #+#    #+#              #
-#    Updated: 2022/12/23 16:49:31 by hmohamed         ###   ########.fr        #
+#    Updated: 2022/12/25 18:21:31 by hmohamed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME) : $(OBJ)
-	make -C \libft
-	$(CC) $(CFLAGS) $(OBJ) libft/libft.a  -o $(NAME) 
+	(cd libft && make)
+	$(CC) $(CFLAGS) libft/libft.a $(OBJ) -o $(NAME) 
 	
 
 

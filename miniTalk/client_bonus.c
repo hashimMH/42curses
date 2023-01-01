@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:23:36 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/21 14:27:19 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/12/26 14:58:30 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	sendend(int pid)
 	{
 		kill(pid, SIGUSR2);
 		bit++;
-		usleep(100);
+		usleep(10);
 	}
 }
 

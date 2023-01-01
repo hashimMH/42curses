@@ -6,29 +6,78 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/23 16:43:01 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/01 20:02:32 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	check_num(long num, t_list **a)
+{
 
-// void	setnum(int num)
-// {
-// 	t_list	a;
-	
-	
-// }
+	if (num > 2147483647 || num < -2147483648)
+	{
+		write(2, "error", 6);
+		ft_lstclear(a);
+		exit(0);
+	}
+	else
+	{
+		ft_lstadd_back(a, ft_lstnew(num));
+	}
+	return ;
+}
 
-int	main(int ac, char **av)
+void	free_sp(char **sp)
 {
 	int	i;
 
-	i = 1;
-	if (ac <= 1)
-		return (0);
-	while (i < ac)
+	i = 0;
+	while (sp[i])
 	{
-		write(1, &av[i][1], 1);
+		free(sp[i]);
+		i++;
 	}
+	free(sp);
+}
+
+void	setnum(char **num)
+{
+	int		i;
+	int		j;
+	char	**sp;
+	t_list	*a;
+	t_list *tm;
+
+	i = 0;
+	a = NULL;
+	while (num[i])
+	{
+		j = 0;
+		sp = ft_split(num[i], ' ');
+		while (sp[j])
+		{
+			//printf("sp : %s   ", sp[j]);
+			check_num(ft_atol(sp[j]), &a);
+			j++;
+		}
+		free_sp(sp);
+		i++;
+	}
+	tm = a;
+	if (!a)
+		printf("nothing");
+	while (tm)
+	{
+		printf(" list val: %d", (tm->content));
+		tm = tm->next;
+	}	
+	printf("\n end of func");
+}
+
+int	main(int ac, char **av)
+{
+	if (ac > 1)
+		setnum(av + 1);
+	return (0);
 }

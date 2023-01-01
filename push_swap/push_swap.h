@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:15:41 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/23 16:48:05 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/01 19:27:52 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,6 @@
 # include <signal.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include "libft.h"
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+# include "libft/libft.h"
 
 #endif

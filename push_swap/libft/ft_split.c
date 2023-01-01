@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:27:29 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/16 13:08:46 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:56:10 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static char	*wdup(const char *str, int i, int j, int *p)
 
 	a = 0;
 	s = (char *)malloc((j - i + 1) * sizeof(char));
+	if (!s)
+		return (NULL);
 	while (i < j)
 	{
 		s[a] = str[i];

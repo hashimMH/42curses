@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:23:43 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/12/21 14:27:14 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/12/26 14:39:36 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	main(int ac, char **av)
 {
 	(void)av;
 	ft_putnbr_fd(getpid(), 1);
+	write(1, "\n", 1);
 	while (ac == 1)
 	{
 		signal(SIGUSR1, handler);

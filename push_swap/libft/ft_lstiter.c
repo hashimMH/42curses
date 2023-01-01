@@ -6,13 +6,13 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:40:36 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/09 16:43:29 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/01 19:25:05 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_lstiter(t_list *lst, void (*f)(int))
 {
 	if (lst && f)
 	{
