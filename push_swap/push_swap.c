@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/01 20:02:32 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:51:11 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	setnum(char **num)
 	{
 		j = 0;
 		sp = ft_split(num[i], ' ');
+		if (!sp[0])
+			write(2, "error", 6);
 		while (sp[j])
 		{
 			//printf("sp : %s   ", sp[j]);
@@ -64,9 +66,10 @@ void	setnum(char **num)
 		free_sp(sp);
 		i++;
 	}
+	check_dup(&a);
 	tm = a;
-	if (!a)
-		printf("nothing");
+	// if (!a)
+	// 	write(2, "error", 6);
 	while (tm)
 	{
 		printf(" list val: %d", (tm->content));

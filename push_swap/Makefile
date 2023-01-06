@@ -6,12 +6,12 @@
 #    By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/23 16:14:02 by hmohamed          #+#    #+#              #
-#    Updated: 2022/12/25 18:21:31 by hmohamed         ###   ########.fr        #
+#    Updated: 2023/01/06 18:52:09 by hmohamed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-SRC = push_swap.c
+SRC = push_swap.c push_swap_utils_lst.c
 OBJ = $(SRC:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -20,7 +20,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME) : $(OBJ)
-	(cd libft && make)
+	@(cd libft && make)
 	$(CC) $(CFLAGS) libft/libft.a $(OBJ) -o $(NAME) 
 	
 
