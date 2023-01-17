@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:15:41 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/17 17:23:48 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:44:55 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "libft/libft.h"
 
 void check_dup(t_list **a);
-int is_sorted(t_list **a, t_list **b);
+int is_sorted(t_list *a, t_list *b);
 void check_num(long num, t_list **a);
 void setnum(char **num);
 void free_sp(char **sp);
