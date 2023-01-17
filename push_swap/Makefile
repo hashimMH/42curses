@@ -6,12 +6,12 @@
 #    By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/23 16:14:02 by hmohamed          #+#    #+#              #
-#    Updated: 2023/01/17 16:26:58 by hmohamed         ###   ########.fr        #
+#    Updated: 2023/01/17 16:58:53 by hmohamed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-SRC = push_swap.c push_swap_utils_lst.c moves/push_swap_moves.c sorting.c
+SRC = push_swap.c push_swap_utils_lst.c moves/p_s_moves_frst.c moves/p_s_moves_scnd.c sorting.c
 OBJ = $(SRC:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
