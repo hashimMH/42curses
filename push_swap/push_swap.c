@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/06 18:51:11 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/12 20:48:22 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	check_num(long num, t_list **a)
 {
-
 	if (num > 2147483647 || num < -2147483648)
 	{
-		write(2, "error", 6);
+		write(2, "Error\n", 6);
 		ft_lstclear(a);
 		exit(0);
 	}
@@ -25,7 +24,7 @@ void	check_num(long num, t_list **a)
 	{
 		ft_lstadd_back(a, ft_lstnew(num));
 	}
-	return ;
+	// return ;
 }
 
 void	free_sp(char **sp)
@@ -47,7 +46,6 @@ void	setnum(char **num)
 	int		j;
 	char	**sp;
 	t_list	*a;
-	t_list *tm;
 
 	i = 0;
 	a = NULL;
@@ -56,7 +54,10 @@ void	setnum(char **num)
 		j = 0;
 		sp = ft_split(num[i], ' ');
 		if (!sp[0])
-			write(2, "error", 6);
+		{
+			write(2, "Error\n", 6);
+			exit(0);
+		}
 		while (sp[j])
 		{
 			//printf("sp : %s   ", sp[j]);
@@ -67,15 +68,7 @@ void	setnum(char **num)
 		i++;
 	}
 	check_dup(&a);
-	tm = a;
-	// if (!a)
-	// 	write(2, "error", 6);
-	while (tm)
-	{
-		printf(" list val: %d", (tm->content));
-		tm = tm->next;
-	}	
-	printf("\n end of func");
+	sort(&a);
 }
 
 int	main(int ac, char **av)

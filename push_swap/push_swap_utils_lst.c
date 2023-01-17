@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:37:22 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/06 18:57:30 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/07 17:46:19 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,20 @@ void	check_dup(t_list **a)
 		}
 		p = p ->next;
 	}
+}
+
+int	is_sorted(t_list **a)
+{
+	t_list	*p;
+	t_list	*pp;
+
+	p = *a;
+	while (p ->next)
+	{
+		pp = p ->next;
+		if (p ->content > pp ->content)
+			return (0);
+		p = p ->next;
+	}
+	return (1);
 }
