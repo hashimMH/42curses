@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:37:22 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/17 17:59:50 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:34:28 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int is_sorted(t_list *a, t_list *b)
 	t_list *tm;
 
 	tm = a;
-	// c_value = 0;
 	while (tm)
 	{
 		c_value = tm->content;
-		if (c_value > tm->next->content)
-			return (0);
+		if (tm->next != NULL)
+			if (c_value > tm->next->content)
+				return (0);
 		tm = tm->next;
 	}
 	if (b != NULL)
