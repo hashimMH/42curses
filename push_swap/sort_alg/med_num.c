@@ -1,43 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
+/*   med_num.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 19:37:46 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/20 20:50:43 by hmohamed         ###   ########.fr       */
+/*   Created: 2023/01/20 19:37:15 by hmohamed          #+#    #+#             */
+/*   Updated: 2023/01/20 20:50:52 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	sort(t_list **a)
+void	sort_rest(t_list **a, t_list **b, int size)
 {
-	t_list	*b;
-	t_list	*tm;
-	int i;
+	int	i;
+	int	j;
+	int z;
+	// t_list *tm;
 
-	b = NULL;
-	tm = *a;
-	i = ft_lstsize(tm);
-	if (i == 2 && !is_sorted(tm, b))
-		sa(&tm);
-	else if (i == 3 && !is_sorted(tm, b))
-		sort_three(&tm);
-	else if (i == 4 && !is_sorted(tm, b))
-		sort_four(&tm, &b);
-	else if (i == 5 && !is_sorted(tm, b))
-		sort_five(&tm, &b);
-	else
-		sort_rest(&tm, &b, i);
-	// if (is_sorted(tm, b))
-	// 	 printf("sooorted");
+	i = 0;
+	z = size;
+	while (i < size)
+	{
+		j = small_num(*a);
+		if (j <= z / 2)
+			while (j-- > 1)
+				ra(a);
+		else
+			while (j++ <= z && z >= 2)
+				rra(a);
+		pb (a, b);
+		i++;
+		z--;
+	}
+	while (size--)
+		pa(a, b);
+	// tm = *a;
 	// while (tm)
 	// {
 	// 	printf("num : %d ", tm->content);
 	// 	tm = tm->next;
 	// }
-	
-	//  printf("\n end of func");
 }

@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:15:41 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/20 19:03:02 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:53:14 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	sort_three(t_list **a);
 void	sort_five(t_list **a, t_list **b);
 int		small_num(t_list *a);
 void	sort_four(t_list **a, t_list **b);
+void	sort_rest(t_list **a, t_list **b, int size);
 
 #endif
