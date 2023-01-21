@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/12 20:48:22 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:23:59 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	setnum(char **num)
 		}
 		while (sp[j])
 		{
-			//printf("sp : %s   ", sp[j]);
 			check_num(ft_atol(sp[j]), &a);
 			j++;
 		}
