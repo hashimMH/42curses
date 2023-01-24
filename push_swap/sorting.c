@@ -6,16 +6,16 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 19:37:46 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/21 16:32:01 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:26:50 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort(t_list **a)
+void sort(t_list **a)
 {
-	t_list	*b;
-	t_list	*tm;
+	t_list *b;
+	t_list *tm;
 	int i;
 
 	b = NULL;
@@ -32,12 +32,12 @@ void	sort(t_list **a)
 	else
 		sort_rest(&tm, &b, i);
 	if (is_sorted(tm, b))
-		 printf("sooorted");
+		printf("sooorted");
 	// while (tm)
 	// {
 	// 	printf("num : %d ", tm->content);
 	// 	tm = tm->next;
 	// }
-	
+
 	//  printf("\n end of func");
 }

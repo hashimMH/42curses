@@ -6,17 +6,17 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:06:00 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/20 19:04:24 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/24 16:09:16 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	sort_three(t_list **a)
+void sort_three(t_list **a)
 {
-	t_list	*tm;
-	t_list	*nxt;
-	t_list	*lst;
+	t_list *tm;
+	t_list *nxt;
+	t_list *lst;
 
 	tm = *a;
 	nxt = tm->next;
@@ -51,9 +51,9 @@ void	sort_three(t_list **a)
 // 	printf("psition :  %d\n", first);
 // }
 
-void	sort_five(t_list **a, t_list **b)
+void sort_five(t_list **a, t_list **b)
 {
-	int		first;
+	int first;
 
 	first = small_num(*a);
 	if (first == 2)
@@ -73,14 +73,14 @@ void	sort_five(t_list **a, t_list **b)
 	pb(a, b);
 	sort_four(a, b);
 	pa(a, b);
-	//printf("psition :  %d\n", first);
+	// printf("psition :  %d\n", first);
 }
 
-int	small_num(t_list *a)
+int small_num(t_list *a)
 {
-	t_list	*am;
-	t_list	*nxt;
-	int		count;
+	t_list *am;
+	t_list *nxt;
+	int count;
 
 	am = a;
 	count = 1;
@@ -97,9 +97,9 @@ int	small_num(t_list *a)
 	return (count);
 }
 
-void	sort_four(t_list **a, t_list **b)
+void sort_four(t_list **a, t_list **b)
 {
-	int		first;
+	int first;
 
 	first = small_num(*a);
 	if (first == 2)
@@ -114,4 +114,25 @@ void	sort_four(t_list **a, t_list **b)
 	pb(a, b);
 	sort_three(a);
 	pa(a, b);
+}
+
+int big_num(t_list *a)
+{
+	t_list *am;
+	t_list *nxt;
+	int count;
+
+	am = a;
+	count = 1;
+	while (am)
+	{
+		nxt = a;
+		while (nxt && (am->content >= nxt->content))
+			nxt = nxt->next;
+		if (!nxt)
+			return (count);
+		count++;
+		am = am->next;
+	}
+	return (count);
 }

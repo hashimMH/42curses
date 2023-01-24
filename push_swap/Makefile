@@ -6,7 +6,7 @@
 #    By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/23 16:14:02 by hmohamed          #+#    #+#              #
-#    Updated: 2023/01/20 19:53:52 by hmohamed         ###   ########.fr        #
+#    Updated: 2023/01/24 18:22:12 by hmohamed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 SRC = push_swap.c push_swap_utils_lst.c moves/p_s_moves_frst.c moves/p_s_moves_scnd.c sorting.c sort_alg/low_num.c sort_alg/med_num.c
 OBJ = $(SRC:.c=.o)
 CC = gcc
-CFLAGS = -g -fsanitize=address -Wall -Wextra -Werror
+CFLAGS =  -Wall -Wextra -Werror
 
 LIBFT = ./libft/libft.a
 all: $(NAME)
