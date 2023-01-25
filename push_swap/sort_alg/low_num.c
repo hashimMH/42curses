@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:06:00 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/24 16:09:16 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/24 19:23:25 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int small_num(t_list *a)
 
 void sort_four(t_list **a, t_list **b)
 {
-	int first;
+	int	first;
 
 	first = small_num(*a);
 	if (first == 2)

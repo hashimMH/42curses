@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 19:37:46 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/24 18:26:50 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/24 20:58:48 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ void sort(t_list **a)
 		sort_four(&tm, &b);
 	else if (i == 5 && !is_sorted(tm, b))
 		sort_five(&tm, &b);
-	else
+	else if (i > 5 && !is_sorted(tm, b))
 		sort_rest(&tm, &b, i);
-	if (is_sorted(tm, b))
-		printf("sooorted");
+	ft_lstclear(&tm);
+	// if (is_sorted(tm, b))
+	// 	printf("sooorted");
 	// while (tm)
 	// {
 	// 	printf("num : %d ", tm->content);

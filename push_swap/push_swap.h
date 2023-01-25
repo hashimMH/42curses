@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:15:41 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/24 18:14:49 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/24 21:04:44 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@
 
 void check_dup(t_list **a);
 int is_sorted(t_list *a, t_list *b);
-void check_num(long num, t_list **a);
+int	check_num(long num, t_list **a);
 void setnum(char **num);
 void free_sp(char **sp);
+void	free_sp_ex(char **sp, t_list **a);
 // void	h_moves(char *s, t_list **a, t_list **b);
 void sa(t_list **a);
 void sb(t_list **b);
