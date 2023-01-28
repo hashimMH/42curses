@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:18:32 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/24 21:06:55 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:53:40 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	check_num(long num, t_list **a)
 {
-
 	if (num > 2147483647 || num < -2147483648)
 	{
 		return (1);

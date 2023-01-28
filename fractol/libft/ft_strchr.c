@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 19:37:46 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/25 15:42:37 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/02 17:28:34 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/07 13:48:00 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	sort(t_list **a)
+char	*ft_strchr(const char *s, int c)
 {
-	t_list	*b;
-	t_list	*tm;
 	int		i;
+	char	*temp;
 
-	b = NULL;
-	tm = *a;
-	i = ft_lstsize(tm);
-	if (i == 2 && !is_sorted(tm, b))
-		sa(&tm);
-	else if (i == 3 && !is_sorted(tm, b))
-		sort_three(&tm);
-	else if (i == 4 && !is_sorted(tm, b))
-		sort_four(&tm, &b);
-	else if (i == 5 && !is_sorted(tm, b))
-		sort_five(&tm, &b);
-	else if (i > 5 && !is_sorted(tm, b))
-		sort_rest(&tm, &b, i);
-	ft_lstclear(&tm);
+	temp = (char *)s;
+	i = 0;
+	while (temp[i] != '\0')
+	{
+		if (temp[i] == (unsigned char)c)
+			return (&temp[i]);
+		i++;
+	}
+	if (c == '\0' && temp[i] == '\0')
+		return (&temp[i]);
+	return (0);
 }

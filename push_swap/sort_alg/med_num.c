@@ -6,18 +6,17 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 19:37:15 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/24 19:38:30 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:46:17 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void sort_rest(t_list **a, t_list **b, int size)
+void	sort_rest(t_list **a, t_list **b, int size)
 {
-	int i;
-	int j;
-	int z;
-	// t_list *tm;
+	int	i;
+	int	j;
+	int	z;
 
 	i = 0;
 	z = size;
@@ -40,24 +39,15 @@ void sort_rest(t_list **a, t_list **b, int size)
 		i++;
 		z--;
 	}
-	// while (size--)
-	// 	pa(a, b);
-	// tm = *a;
-	// while (tm)
-	// {
-	// 	printf("num : %d ", tm->content);
-	// 	tm = tm->next;
-	// }
 }
 
-void move_rest(t_list **a, t_list **b, int size)
+void	move_rest(t_list **a, t_list **b, int size)
 {
-	int i;
-	int j;
-	int z;
-	int big;
-	int small;
-	// t_list *tm;
+	int	i;
+	int	j;
+	int	z;
+	int	big;
+	int	small;
 
 	i = 0;
 	z = size;
@@ -76,20 +66,12 @@ void move_rest(t_list **a, t_list **b, int size)
 		i++;
 		z--;
 	}
-	// while (size--)
-	// 	pa(a, b);
-	// tm = *a;
-	// while (tm)
-	// {
-	// 	printf("num : %d ", tm->content);
-	// 	tm = tm->next;
-	// }
 }
 
-int big_val(t_list *a)
+int	big_val(t_list *a)
 {
-	t_list *am;
-	t_list *nxt;
+	t_list	*am;
+	t_list	*nxt;
 
 	am = a;
 	while (am)
@@ -104,11 +86,11 @@ int big_val(t_list *a)
 	return (0);
 }
 
-int small_val(t_list *a)
+int	small_val(t_list *a)
 {
-	t_list *am;
-	t_list *nxt;
-	int count;
+	t_list	*am;
+	t_list	*nxt;
+	int		count;
 
 	am = a;
 	count = 1;
@@ -125,10 +107,10 @@ int small_val(t_list *a)
 	return (0);
 }
 
-int small_avg(t_list *a, int s, int e)
+int	small_avg(t_list *a, int s, int e)
 {
-	t_list *am;
-	int count;
+	t_list	*am;
+	int		count;
 
 	am = a;
 	count = 1;

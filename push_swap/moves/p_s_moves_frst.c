@@ -6,16 +6,16 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 17:47:41 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/17 16:53:45 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:48:18 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void sa(t_list **a)
+void	sa(t_list **a)
 {
-	t_list *temp;
-	t_list *t;
+	t_list	*temp;
+	t_list	*t;
 
 	temp = *a;
 	t = temp->next;
@@ -26,10 +26,10 @@ void sa(t_list **a)
 	write(1, "sa\n", 3);
 }
 
-void sb(t_list **a)
+void	sb(t_list **a)
 {
-	t_list *temp;
-	t_list *t;
+	t_list	*temp;
+	t_list	*t;
 
 	temp = *a;
 	t = temp->next;
@@ -40,17 +40,17 @@ void sb(t_list **a)
 	write(1, "sb\n", 3);
 }
 
-void ss(t_list **a, t_list **b)
+void	ss(t_list **a, t_list **b)
 {
 	sa(a);
 	sb(b);
 	write(1, "ss\n", 3);
 }
 
-void pa(t_list **a, t_list **b)
+void	pa(t_list **a, t_list **b)
 {
-	t_list *temp;
-	t_list *t;
+	t_list	*temp;
+	t_list	*t;
 
 	temp = *b;
 	t = temp->next;
@@ -60,10 +60,10 @@ void pa(t_list **a, t_list **b)
 	write(1, "pa\n", 3);
 }
 
-void pb(t_list **a, t_list **b)
+void	pb(t_list **a, t_list **b)
 {
-	t_list *temp;
-	t_list *t;
+	t_list	*temp;
+	t_list	*t;
 
 	temp = *a;
 	t = temp->next;

@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 19:37:46 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/25 15:42:37 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/02 17:32:11 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/16 13:17:13 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	sort(t_list **a)
+static int	check(int i, char *s, int c)
 {
-	t_list	*b;
-	t_list	*tm;
-	int		i;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
-	b = NULL;
-	tm = *a;
-	i = ft_lstsize(tm);
-	if (i == 2 && !is_sorted(tm, b))
-		sa(&tm);
-	else if (i == 3 && !is_sorted(tm, b))
-		sort_three(&tm);
-	else if (i == 4 && !is_sorted(tm, b))
-		sort_four(&tm, &b);
-	else if (i == 5 && !is_sorted(tm, b))
-		sort_five(&tm, &b);
-	else if (i > 5 && !is_sorted(tm, b))
-		sort_rest(&tm, &b, i);
-	ft_lstclear(&tm);
+char	*ft_strrchr(const char *s, int c)
+{
+	int		i;
+	char	*temp;
+
+	i = 0;
+	temp = (char *)s;
+	while (s[i] != '\0')
+	{
+		if (temp[i] == (unsigned char)c && !check(i + 1, temp, c))
+			return (&temp[i]);
+		i++;
+	}
+	if (c == '\0' && temp[i] == '\0')
+		return (&temp[i]);
+	return (0);
 }
