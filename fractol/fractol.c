@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:02:12 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/28 19:59:53 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/02/01 21:38:37 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
-
-
-int	main(void)
+void printc()
 {
-	void	*mlx;
+		void	*mlx;
 	t_data	img;
 	void	*mlx_win;
 	int		i;
@@ -67,6 +65,25 @@ int	main(void)
 				}
 				l -= 0.1;
 			}
+	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	mlx_loop(mlx);
+}
+
+
+int	main(int ac, char **av)
+{
+	void	*mlx;
+	t_data	img;
+	void	*mlx_win;
+
+	(void)ac;
+	(void)av;
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1080, 1080, "Hello world!");
+	img.img = mlx_new_image(mlx, 1080, 1080);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+			&img.endian);
+	manbord(1080, 1080, img);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 }
