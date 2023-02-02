@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:49:49 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/02/01 21:36:14 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/02/02 19:26:38 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,28 @@ typedef struct dv
 	double			y;
 	int				iteration;
 	double			x_new;
+	double			z;
+	double			mx;
+	double			my;
 }				t_tv;
 
-void	manbord(int xs, int ys, t_data img);
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+}	t_mlx;
+
+typedef struct s_fac
+{
+	struct s_mlx	*mlx;
+	struct s_data	*img;
+	struct dv		*var;
+}	t_fac;
+
+
+void	drawmandel(t_tv	*re, t_data *img);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	manbord(int xs, int ys, t_fac *st);
+void	def_var(t_fac *fc);
 
 #endif

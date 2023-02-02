@@ -6,50 +6,79 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 18:37:14 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/02/01 21:44:14 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/02/02 20:08:51 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	manbord(int xs, int ys, t_data img)
+void	def_var(t_fac *fc)
 {
-	t_tv	st;
+	fc->var->max = 1000;
+	fc->var->z = 1;
+	fc->var->mx = 0;
+	fc->var->my = 0;
 
-	st.clr = 0x00FF00AA;
-	st.max = 2;
-	st.row = 0;
-	while (st.row < xs)
+}
+
+void	manbord(int xs, int ys, t_fac *st)
+{
+	st->var->clr = 0x00FF00AA;
+	st->var->row = 0;
+	while (st->var->row < xs)
 	{
-		st.col = 0;
-		while (st.col < ys)
+		st->var->col = 0;
+		while (st->var->col < ys)
 		{
-			st.c_re = (st.col - ys / 2.0) * 4.0 / xs;
-			st.c_im = (st.row - xs / 2.0) * 4.0 / xs;
-			st.x = 0;
-			st.y = 0;
-			st.iteration = 0;
-			while (st.x * st.x + st.y * st.y <= 4 && st.iteration < st.max)
-			{
-				st.x_new = st.x * st.x - st.y * st.y + st.c_re;
-				st.y = 2 * st.x * st.y + st.c_im;
-				st.x = st.x_new;
-				st.iteration++;
-			}
-			if (st.iteration == st.max)
-				my_mlx_pixel_put(&img, st.col, st.row, 0x00000000);
-			else
-				my_mlx_pixel_put(&img, st.col, st.row, st.clr * st.iteration);
-		st.col++;
+			st->var->c_re = (st->var->col - ys / 2.0) * 4.0 / xs / st->var->z;
+			st->var->c_im = (st->var->row - xs / 2.0) * 4.0 / xs / st->var->z;
+			st->var->x = 0;
+			st->var->y = 0;
+			st->var->iteration = 0;
+			drawmandel(st->var, st->img);
+		st->var->col++;
 		}
-		st.row++;
+		st->var->row++;
 	}
 }
 
-// void	drawmandel(int row, int col)
+// void	zmmanbord(int xs, int ys, t_fac *st)
 // {
 
+// 	st->var->clr = 0x00FF00AA;
+// 	st->var->max = 1000;
+// 	st->var->row = 0;
+// 	while (st->var->row < xs)
+// 	{
+// 		st->var->col = 0;
+// 		while (st->var->col < ys)
+// 		{
+// 			st->var->c_re = (st->var->col - ys / 2.0) * 4.0 / xs / st->var->z;
+// 			st->var->c_im = (st->var->row - xs / 2.0) * 4.0 / xs / st->var->z;
+// 			st->var->x = 0;
+// 			st->var->y = 0;
+// 			st->var->iteration = 0;
+// 			drawmandel(st->var, st->img);
+// 		st->var->col++;
+// 		}
+// 		st->var->row++;
+// 	}
 // }
+
+void	drawmandel(t_tv	*re, t_data *img)
+{
+	while (re->x * re->x + re->y * re->y <= 4 && re->iteration < re->max)
+	{
+		re->x_new = re->x * re->x - re->y * re->y + re->c_re;
+		re->y = 2 * re->x * re->y + re->c_im;
+		re->x = re->x_new;
+		re->iteration++;
+	}
+	if (re->iteration == re->max)
+		my_mlx_pixel_put(img, re->col, re->row, 0x00000000);
+	else
+		my_mlx_pixel_put(img, re->col, re->row, re->clr * re->iteration);
+}
 // int main()
 // {
 // 	int height = 100;
