@@ -6,13 +6,13 @@
 #    By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 16:16:14 by hmohamed          #+#    #+#              #
-#    Updated: 2023/02/02 17:08:17 by hmohamed         ###   ########.fr        #
+#    Updated: 2023/02/04 21:10:27 by hmohamed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = fractol
-SRC = fractol.c mandelbrot.c
+SRC = fractol.c mandelbrot.c julia.c parc.c
 OBJ = $(SRC:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Imlx -fsanitize=address -g

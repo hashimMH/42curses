@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:49:49 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/02/02 19:26:38 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/02/04 21:20:05 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct dv
 	double			z;
 	double			mx;
 	double			my;
+	double			jnx;
+	double			jny;
 }				t_tv;
 
 typedef struct s_mlx
@@ -60,10 +62,11 @@ typedef struct s_fac
 	struct dv		*var;
 }	t_fac;
 
-
 void	drawmandel(t_tv	*re, t_data *img);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	manbord(int xs, int ys, t_fac *st);
 void	def_var(t_fac *fc);
+void	julia(int xs, int ys, t_fac *st);
+int		parc_fractol(char **str, int an);
 
 #endif

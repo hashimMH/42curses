@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 18:37:14 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/02/02 20:08:51 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/02/04 21:26:21 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,27 @@
 
 void	def_var(t_fac *fc)
 {
-	fc->var->max = 1000;
+	
 	fc->var->z = 1;
 	fc->var->mx = 0;
 	fc->var->my = 0;
-
+	fc->var->max = 50;
 }
 
 void	manbord(int xs, int ys, t_fac *st)
 {
 	st->var->clr = 0x00FF00AA;
 	st->var->row = 0;
+	// mlx_clear_window(st->mlx->mlx, st->mlx->win);
 	while (st->var->row < xs)
 	{
 		st->var->col = 0;
 		while (st->var->col < ys)
 		{
-			st->var->c_re = (st->var->col - ys / 2.0) * 4.0 / xs / st->var->z;
-			st->var->c_im = (st->var->row - xs / 2.0) * 4.0 / xs / st->var->z;
+			st->var->c_re = ((st->var->col - xs / 2.0) * 4.0 / xs)
+				/ st->var->z + st->var->mx;
+			st->var->c_im = ((st->var->row - ys / 2.0) * 4.0 / xs)
+				/ st->var->z + st->var->my;
 			st->var->x = 0;
 			st->var->y = 0;
 			st->var->iteration = 0;
@@ -40,6 +43,7 @@ void	manbord(int xs, int ys, t_fac *st)
 		}
 		st->var->row++;
 	}
+	mlx_put_image_to_window(st->mlx->mlx, st->mlx->win, st->img->img, 0, 0);
 }
 
 // void	zmmanbord(int xs, int ys, t_fac *st)

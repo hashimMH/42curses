@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:02:12 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/02/02 20:13:25 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/02/04 21:38:27 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,40 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int	key(int keycode, t_fac *st)
 {
+	double inc;
+	
+	inc = 0.06;
+	if(st->var->z >= 50)
+		inc = 0.002;
 	if (keycode == 53)
 	{
 		mlx_destroy_window(st->mlx->mlx, st->mlx->win);
 		exit(0);
+	}
+	else if (keycode == 124)
+	{
+		st->var->mx = st->var->mx + 1 / st->var->z;
+		manbord(1080, 1080, st);
+	}
+	else if (keycode == 123)
+	{
+		st->var->mx = st->var->mx - 1 / st->var->z;
+		manbord(1080, 1080, st);
+	}
+	else if (keycode == 126)
+	{
+		st->var->my = st->var->my - 1 / st->var->z;
+		manbord(1080, 1080, st);
+	}
+	else if (keycode == 125)
+	{
+		st->var->my = st->var->my + 1 / st->var->z;
+		manbord(1080, 1080, st);
+	}
+	else if (keycode == 46)
+	{
+		st->var->max = st->var->max + 20;
+		manbord(1080, 1080, st);
 	}
 	printf("Key code [%d]\n", keycode);
 	return (0);
@@ -35,10 +65,16 @@ int	mousekey(int keycode, int x, int y, t_fac *st)
 {
 	x = 0;
 	y = 0;
+
 	if (keycode == 5)
 	{
-		mlx_clear_window(st->mlx->mlx, st->mlx->win);
-		st->var->z++;
+		st->var->z = st->var->z * 2;
+		printf("z = : %f", st->var->z);
+		manbord(1080, 1080, st);
+	}
+	else if (keycode == 4)
+	{
+		st->var->z = st->var->z / 2;
 		manbord(1080, 1080, st);
 	}
 	printf("Key code [%d]\n", keycode);
@@ -57,9 +93,9 @@ int	main(int ac, char **av)
 	t_data	img;
 	t_mlx	mlx;
 	t_tv	tv;
+	int		c;
 
-	(void)ac;
-	(void)av;
+	c = parc_fractol(av, ac);
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, 1080, 1080, "Hello world!");
 	img.img = mlx_new_image(mlx.mlx, 1080, 1080);
@@ -68,17 +104,14 @@ int	main(int ac, char **av)
 	f.img = &img;
 	f.mlx = &mlx;
 	f.var = &tv;
+	
 	def_var(&f);
 	manbord(1080, 1080, &f);
-	mlx_put_image_to_window(f.mlx->mlx, f.mlx->win, f.img->img, 0, 0);
 	mlx_hook(f.mlx->win, 2, 0, key, &f);
 	mlx_mouse_hook(f.mlx->win, mousekey, &f);
 	mlx_hook(f.mlx->win, 17, 0, destroy, &f);
 	mlx_loop(f.mlx->mlx);
 }
-
-
-
 
 // int	main(void)
 // {
