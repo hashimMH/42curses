@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:44:20 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/02/05 20:33:29 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/02/05 21:33:59 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ void	hook(int keycode, t_fac *st)
 	else if (keycode == 37)
 	{
 		st->var->max = st->var->max - 20;
+		drawone(st);
+	}
+	else if (keycode == 15)
+	{
+		def_var(st);
 		drawone(st);
 	}
 	else
