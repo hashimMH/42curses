@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:20:34 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/01/01 19:57:40 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/02/05 18:22:20 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	ft_atol(const char *str)
+double	ft_atof(const char *str)
 {
 	int					i;
 	int					c;
-	unsigned long long	num;
+	double				num;
 
 	i = 0;
 	c = 1;
@@ -26,14 +26,13 @@ long	ft_atol(const char *str)
 	if (str[i] != '\0' && (str[i] == '-' || str[i] == '+'))
 		if (str[i++] == '-')
 			c = -1;
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
-	{
-		num = num * 10 + (str[i] - '0');
-		if (num > 9223372036854775807)
-			return (9223372036854775);
+	if (str[i] != '\0' && str[i] == '0' && str[i] == '1')
+		num = num * 10 + (str[i++] - '0');
+	if (str[i] != '\0' && str[i] == '.')
 		i++;
-	}
+	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
+		num = (num * 10 + (str[i++] - '0')) / 10;
 	if (str[i] != '\0')
-		return (9223372036854775);
+		return (10);
 	return (c * num);
 }

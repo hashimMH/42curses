@@ -15,7 +15,7 @@ SRCS = ft_memset.c \
 			  ft_strrchr.c \
 			  ft_strnstr.c \
 			  ft_strncmp.c \
-			  ft_atol.c \
+			  ft_atof.c \
 			  ft_isalpha.c \
 			  ft_isdigit.c \
 			  ft_isalnum.c \
@@ -61,7 +61,7 @@ OBJS = ft_memset.o \
 			  ft_strrchr.o \
 			  ft_strnstr.o \
 			  ft_strncmp.o \
-			  ft_atol.o \
+			  ft_atof.o \
 			  ft_isalpha.o \
 			  ft_isdigit.o \
 			  ft_isalnum.o \
