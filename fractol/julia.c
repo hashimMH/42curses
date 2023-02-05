@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 20:35:58 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/02/04 21:08:23 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/02/05 20:26:07 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	julia(int xs, int ys, t_fac *st)
 {
-	st->var->clr = 0x00FF00AA;
 	st->var->row = 0;
 	while (st->var->row < xs)
 	{

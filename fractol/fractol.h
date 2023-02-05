@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:49:49 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/02/05 19:02:15 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/02/05 20:06:03 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <math.h>
 # include "mlx/mlx.h"
 # include "libft/libft.h"
-# include "complex.h"
 
 typedef struct s_data
 {
@@ -74,5 +72,6 @@ int		key(int keycode, t_fac *st);
 int		mousekey(int keycode, int x, int y, t_fac *st);
 int		destroy(t_fac *f);
 void	hook(int keycode, t_fac *st);
+void	color(int keycode, t_fac *st);
 
 #endif
