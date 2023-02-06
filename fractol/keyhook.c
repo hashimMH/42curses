@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:44:20 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/02/05 21:33:59 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/02/06 18:21:03 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ void	hook(int keycode, t_fac *st)
 	}
 	else if (keycode == 46)
 	{
-		st->var->max = st->var->max + 20;
+		st->var->max = st->var->max + 10;
 		drawone(st);
 	}
 	else if (keycode == 37)
 	{
-		st->var->max = st->var->max - 20;
+		st->var->max = st->var->max - 10;
 		drawone(st);
 	}
 	else if (keycode == 15)
@@ -63,7 +63,6 @@ void	hook(int keycode, t_fac *st)
 	}
 	else
 		color(keycode, st);
-	printf("Key code [%d]\n", keycode);
 }
 
 void	color(int keycode, t_fac *st)
@@ -80,28 +79,28 @@ void	color(int keycode, t_fac *st)
 	}
 	else if (keycode == 20)
 	{
-		st->var->clr = 0x09b838;
+		st->var->clr = 0x00019a66;
 		drawone(st);
 	}
 	else if (keycode == 29)
 	{
-		st->var->clr = 0x00FF00AA;
+		st->var->clr = 0x007FFFD4;
 		drawone(st);
 	}
 	else if (keycode == 21)
 	{
-		st->var->clr = 0x09a9b8;
+		st->var->clr = 0x0000FFAA;
 		drawone(st);
 	}
 }
 
 int	mousekey(int keycode, int x, int y, t_fac *st)
 {
-	printf("x = %d \n y = %d \n", x, y);
+	(void)x;
+	(void)y;
 	if (keycode == 5)
 	{
 		st->var->z = st->var->z * 2;
-		printf("z = : %f", st->var->z);
 		drawone(st);
 	}
 	else if (keycode == 4)
@@ -109,7 +108,6 @@ int	mousekey(int keycode, int x, int y, t_fac *st)
 		st->var->z = st->var->z / 2;
 		drawone(st);
 	}
-	printf("Key code [%d]\n", keycode);
 	return (0);
 }
 

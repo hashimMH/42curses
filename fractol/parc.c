@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 21:02:55 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/02/05 21:42:31 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/02/06 18:24:56 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	parc_fractol(char **str, int an, t_tv *tv)
 {
-	printf("atof me : %f", ft_atof(str[1]));
 	if (an > 1)
 	{
 		if (an == 2 && ft_strncmp("mandelbrot", str[1], 10) == 0)
@@ -28,8 +27,11 @@ int	parc_fractol(char **str, int an, t_tv *tv)
 				return (2);
 			}
 		}
+		else if (an == 2 && ft_strncmp("burningship", str[1], 11) == 0)
+			return (3);
 	}
-	ft_putstr_fd("1:mandelbrot \n2:julia + first point + second point\n", 2);
+	ft_putstr_fd("1:mandelbrot \n2:\
+julia + first point + second point\n3:burningship\n", 2);
 	exit(1);
 }
 
@@ -39,4 +41,6 @@ void	drawone(t_fac *st)
 		manbord(1080, 1080, st);
 	else if (st->var->id == 2)
 		julia(1080, 1080, st);
+	else if (st->var->id == 3)
+		burningship(1080, 1080, st);
 }

@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 18:37:14 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/02/05 20:28:28 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:09:48 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	def_var(t_fac *fc)
 	fc->var->z = 1;
 	fc->var->mx = 0;
 	fc->var->my = 0;
-	fc->var->max = 50;
+	fc->var->max = 30;
 	fc->var->clr = 0x00FF00AA;
 }
 

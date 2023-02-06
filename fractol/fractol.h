@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:49:49 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/02/05 20:06:03 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/02/06 16:54:42 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "mlx/mlx.h"
+# include <math.h>
 # include "libft/libft.h"
 
 typedef struct s_data
@@ -73,5 +74,7 @@ int		mousekey(int keycode, int x, int y, t_fac *st);
 int		destroy(t_fac *f);
 void	hook(int keycode, t_fac *st);
 void	color(int keycode, t_fac *st);
+void	burningship(int xs, int ys, t_fac *st);
+void	drawship(t_tv	*re, t_data *img);
 
 #endif
