@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 19:48:55 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/02/07 19:49:14 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:37:53 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,19 @@ int	ft_atoi(const char *str)
 	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
 	{
 		num = num * 10 + (str[i] - '0');
-		if (num > 9223372036854775807 && c == 1)
-			return (-1);
-		else if (num > 9223372036854775807 && c == -1)
-			return (0);
 		i++;
 	}
+	if (num > 2147483647 || c == -1 || num == 0)
+		return (-1);
 	return (c * num);
+}
+
+long long	get_time(void)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	// printf("time in miliiseconds :  %lld\n",
+	// 	(((long long)tv.tv_sec) * 1000) + (tv.tv_usec / 1000));
+	return ((((long long)tv.tv_sec) * 1000) + (tv.tv_usec / 1000));
 }
