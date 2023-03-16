@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:00 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/15 21:28:06 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/16 13:58:52 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // 	if(fl->nop > 200 || fl->nop == -1 ||fl->notepme == -1 || fl->ttd == -1 || fl->tte == -1 || fl->tts == -1)
 // }
 
-int	parc(int x, char **s, t_flo *fl)
+int parc(int x, char **s, t_flo *fl)
 {
 	if (x == 5 || x == 6)
 	{
@@ -26,6 +26,7 @@ int	parc(int x, char **s, t_flo *fl)
 		fl->tte = ft_atoi(s[3]);
 		fl->tts = ft_atoi(s[4]);
 		fl->time = get_time();
+		fl->alive = 0;
 		if (x == 6)
 			fl->notepme = ft_atoi(s[5]);
 		else
@@ -36,8 +37,7 @@ int	parc(int x, char **s, t_flo *fl)
 		write(2, "Error invalid number arqument\n", 30);
 		return (1);
 	}
-	if (fl->nop > 200 || fl->nop == -1 || fl->notepme == -1
-		|| fl->ttd == -1 || fl->tte == -1 || fl->tts == -1)
+	if (fl->nop > 200 || fl->nop == -1 || fl->notepme == -1 || fl->ttd == -1 || fl->tte == -1 || fl->tts == -1)
 	{
 		write(2, "Error invalid inputs\n", 21);
 		return (1);
@@ -45,11 +45,10 @@ int	parc(int x, char **s, t_flo *fl)
 	return (0);
 }
 
-void	*routine(void *h)
+void *routine(void *h)
 {
-	t_thr		thre;
-	int			ptime;
-
+	t_thr thre;
+	//int ptime;
 
 	thre = *(t_thr *)h;
 	thre.fttd = thre.fl->ttd;
@@ -57,9 +56,10 @@ void	*routine(void *h)
 	{
 		if (pickfork(&thre) || sleaping(&thre) || thinking(&thre))
 		{
-			ptime = get_time() - thre.fl->time;
-			printf("[%d] philo %d is dead\n", ptime, thre.index);
-			break ;
+			
+			// ptime = get_time() - thre.fl->time;
+			// printf("[%d] philo %d is dead\n", ptime, thre.index);
+			break;
 		}
 		pickfork(&thre);
 		sleaping(&thre);
@@ -68,10 +68,10 @@ void	*routine(void *h)
 	return (0);
 }
 
-void	excu(t_flo *fl)
+void excu(t_flo *fl)
 {
-	int			i;
-	t_thr		*thr;
+	int i;
+	t_thr *thr;
 
 	i = 0;
 	thr = malloc(fl->nop * sizeof(t_thr));
@@ -97,15 +97,19 @@ void	excu(t_flo *fl)
 	free(fl->mutex);
 }
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
-	t_flo	flo;
-	int		p;
+	t_flo flo;
+	int p;
 
 	p = parc(ac, av, &flo);
 	if (p == 0)
 	{
+		pthread_mutex_init(&flo.dead, NULL);
+		pthread_mutex_init(&flo.printing, NULL);
 		excu(&flo);
+		pthread_mutex_destroy(&flo.dead);
+		pthread_mutex_destroy(&flo.printing);
 		return (0);
 	}
 	return (1);
