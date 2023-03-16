@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:49 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/07 16:39:14 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/15 21:00:57 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,7 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-typedef struct s_thr
-{
-	int			frone;
-	int			frtwo;
-	pthread_t	th;
-}				t_thr;
+
 
 typedef struct s_flo
 {
@@ -34,12 +29,26 @@ typedef struct s_flo
 	int				tte;
 	int				tts;
 	int				notepme;
-	int				index;
 	long long		time;
-	t_thr			*threds;
+	pthread_mutex_t	*mutex;
 }				t_flo;
+
+typedef struct s_thr
+{
+	pthread_mutex_t	*forkr;
+	pthread_mutex_t	*forkl;
+	int				index;
+	int				fttd;
+	pthread_t		th;
+	t_flo			*fl;
+}				t_thr;
 
 int			ft_atoi(const char *str);
 long long	get_time(void);
+int			pickfork(t_thr *thre);
+int			eating(t_thr *thre);
+int			sleaping(t_thr *flo);
+int			thinking(t_thr *flo);
+int			checkdead(t_thr *flo);
 
 #endif

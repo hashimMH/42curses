@@ -6,15 +6,15 @@
 #    By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 18:14:30 by hmohamed          #+#    #+#              #
-#    Updated: 2023/02/07 19:49:35 by hmohamed         ###   ########.fr        #
+#    Updated: 2023/03/11 18:36:53 by hmohamed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
-SRC = philo.c utils.c
+SRC = philo.c utils.c rout.c
 OBJ = $(SRC:.c=.o)
 CC = gcc
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror -pthread
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:00 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/07 16:45:16 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/15 21:28:06 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,23 @@ int	parc(int x, char **s, t_flo *fl)
 
 void	*routine(void *h)
 {
-	t_flo		fl;
+	t_thr		thre;
 	int			ptime;
 
-	fl = *(t_flo *)h;
-	while (fl.notepme != 0)
+
+	thre = *(t_thr *)h;
+	thre.fttd = thre.fl->ttd;
+	while (thre.fl->notepme != 0)
 	{
-		ptime = get_time() - fl.time;
-		printf("[%d] philo %d is eating\n", ptime, fl.index);
+		if (pickfork(&thre) || sleaping(&thre) || thinking(&thre))
+		{
+			ptime = get_time() - thre.fl->time;
+			printf("[%d] philo %d is dead\n", ptime, thre.index);
+			break ;
+		}
+		pickfork(&thre);
+		sleaping(&thre);
+		thinking(&thre);
 	}
 	return (0);
 }
@@ -62,23 +71,30 @@ void	*routine(void *h)
 void	excu(t_flo *fl)
 {
 	int			i;
+	t_thr		*thr;
 
 	i = 0;
+	thr = malloc(fl->nop * sizeof(t_thr));
+	fl->mutex = malloc(fl->nop * sizeof(int));
 	while (i < fl->nop)
 	{
-		fl->index = i;
-		if (pthread_create(&((fl->threds[i]).th), NULL, routine, fl) != 0)
+		pthread_mutex_init(&fl->mutex[i], NULL);
+		thr[i].index = i + 1;
+		thr[i].fl = fl;
+		if (pthread_create(&((thr[i]).th), NULL, &routine, &thr[i]) != 0)
 			perror("Error");
 		i++;
 	}
 	i = 0;
 	while (i < fl->nop)
 	{
-		if (pthread_join(fl->threds[i].th, NULL) != 0)
+		if (pthread_join(thr[i].th, NULL) != 0)
 			perror("Error");
+		pthread_mutex_destroy(&fl->mutex[i]);
 		i++;
 	}
-	//printf("kashf almastoor\n");
+	free(thr);
+	free(fl->mutex);
 }
 
 int	main(int ac, char **av)
@@ -87,14 +103,10 @@ int	main(int ac, char **av)
 	int		p;
 
 	p = parc(ac, av, &flo);
-	flo.threds = malloc(flo.nop * sizeof(t_thr));
 	if (p == 0)
 	{
 		excu(&flo);
-		free(flo.threds);
 		return (0);
 	}
-	else
-		free(flo.threds);
 	return (1);
 }
