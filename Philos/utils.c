@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 19:48:55 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/16 14:48:05 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:29:41 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,9 @@ long long get_time(void)
 void printing(t_thr *flo, char *str)
 {
 	int ptime;
+	
 	pthread_mutex_lock(&flo->fl->printing);
 	ptime = get_time() - flo->fl->time;
-	if (!flo->fl->alive)
-	{
-		printf("[%d] philo %d is %s\n", ptime, flo->index, str);
-		pthread_mutex_unlock(&flo->fl->printing);
-		return ;
-	}
-	else if (flo->fl->alive)
-	{
-		printf("[%d] philo %d is %s\n", ptime, flo->index, str);
-		pthread_mutex_unlock(&flo->fl->printing);
-	}else
-		pthread_mutex_unlock(&flo->fl->printing);
+	printf("[%d] philo %d is %s\n", ptime, flo->index, str);
+	pthread_mutex_unlock(&flo->fl->printing);
 }

@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 17:04:37 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/16 14:44:23 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:38:03 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ int pickfork(t_thr *thre)
 
 int eating(t_thr *thre)
 {
-	// int	ptime;
+	int	ptime;
 	if (thre->fl->alive)
 		return (1);
 
 	if (checkdead(thre) || thre->fl->alive)
 		return (1);
-	// ptime = get_time() - thre->fl->time;
-	thre->fttd = thre->fttd + thre->fl->ttd;
+	ptime = get_time() - thre->fl->time;
+	thre->fttd = ptime + thre->fl->ttd;
 	printing(thre, "eating");
 	// printf("[%d] philo %d is eating\n", ptime, thre->index);
 	usleep(thre->fl->tte * 1000);
@@ -87,8 +87,8 @@ int checkdead(t_thr *flo)
 {
 	int ptime;
 
-	ptime = get_time() - flo->fl->time;
 	pthread_mutex_lock(&flo->fl->dead);
+	ptime = get_time() - flo->fl->time;
 	if (ptime >= flo->fttd)
 	{
 		flo->fl->alive = 1;
