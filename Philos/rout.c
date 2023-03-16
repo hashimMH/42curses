@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 17:04:37 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/16 15:38:03 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/16 18:40:39 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int pickfork(t_thr *thre)
 	}
 	pthread_mutex_lock(thre->forkl);
 	pthread_mutex_lock(thre->forkr);
+	printing(thre, ptakefork);
 	eating(thre);
 	pthread_mutex_unlock(thre->forkl);
 	pthread_mutex_unlock(thre->forkr);
@@ -47,7 +48,7 @@ int eating(t_thr *thre)
 		return (1);
 	ptime = get_time() - thre->fl->time;
 	thre->fttd = ptime + thre->fl->ttd;
-	printing(thre, "eating");
+	printing(thre, peating);
 	// printf("[%d] philo %d is eating\n", ptime, thre->index);
 	usleep(thre->fl->tte * 1000);
 	return (0);
@@ -63,7 +64,7 @@ int sleaping(t_thr *flo)
 	if (checkdead(flo) || flo->fl->alive)
 		return (1);
 	// ptime = get_time() - flo->fl->time;
-	printing(flo, "sleaping");
+	printing(flo, psleeping);
 	// printf("[%d] philo %d is sleeping\n", ptime, flo->index);
 	usleep(flo->fl->tts * 1000);
 	return (0);
@@ -78,7 +79,7 @@ int thinking(t_thr *flo)
 	if (checkdead(flo) || flo->fl->alive)
 		return (1);
 	// ptime = get_time() - flo->fl->time;
-	printing(flo, "thinking");
+	printing(flo, pthinking);
 	// printf("[%d] philo %d is thinking\n", ptime, flo->index);
 	return (0);
 }
@@ -91,8 +92,7 @@ int checkdead(t_thr *flo)
 	ptime = get_time() - flo->fl->time;
 	if (ptime >= flo->fttd)
 	{
-		flo->fl->alive = 1;
-		printing(flo, "dead");
+		printing(flo, pdead);
 		pthread_mutex_unlock(&flo->fl->dead);
 		return (1);
 	}
