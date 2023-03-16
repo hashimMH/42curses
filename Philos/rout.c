@@ -6,13 +6,13 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 17:04:37 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/16 18:40:39 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/16 21:00:51 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int pickfork(t_thr *thre)
+int	pickfork(t_thr *thre)
 {
 
 	if (thre->fl->alive)
@@ -38,9 +38,10 @@ int pickfork(t_thr *thre)
 	return (0);
 }
 
-int eating(t_thr *thre)
+int	eating(t_thr *thre)
 {
 	int	ptime;
+
 	if (thre->fl->alive)
 		return (1);
 
@@ -50,11 +51,11 @@ int eating(t_thr *thre)
 	thre->fttd = ptime + thre->fl->ttd;
 	printing(thre, peating);
 	// printf("[%d] philo %d is eating\n", ptime, thre->index);
-	usleep(thre->fl->tte * 1000);
+	psleep(thre, get_time(), thre->fl->tte);
 	return (0);
 }
 
-int sleaping(t_thr *flo)
+int	sleaping(t_thr *flo)
 {
 	// int	ptime;
 
@@ -66,11 +67,11 @@ int sleaping(t_thr *flo)
 	// ptime = get_time() - flo->fl->time;
 	printing(flo, psleeping);
 	// printf("[%d] philo %d is sleeping\n", ptime, flo->index);
-	usleep(flo->fl->tts * 1000);
+	psleep(flo, get_time(), flo->fl->tts);
 	return (0);
 }
 
-int thinking(t_thr *flo)
+int	thinking(t_thr *flo)
 {
 	// int	ptime;
 	if (flo->fl->alive)
@@ -84,9 +85,9 @@ int thinking(t_thr *flo)
 	return (0);
 }
 
-int checkdead(t_thr *flo)
+int	checkdead(t_thr *flo)
 {
-	int ptime;
+	int	ptime;
 
 	pthread_mutex_lock(&flo->fl->dead);
 	ptime = get_time() - flo->fl->time;

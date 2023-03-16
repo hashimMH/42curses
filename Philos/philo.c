@@ -6,18 +6,22 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:00 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/16 13:58:52 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/16 21:27:41 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// int	pat(t_flo *fl)
-// {
-// 	if(fl->nop > 200 || fl->nop == -1 ||fl->notepme == -1 || fl->ttd == -1 || fl->tte == -1 || fl->tts == -1)
-// }
+void	psleep(t_thr *flo, long long ctime, long long time)
+{
+	while (get_time() - ctime < time)
+	{
+		if (checkdead(flo))
+			break ;
+	}
+}
 
-int parc(int x, char **s, t_flo *fl)
+int	parc(int x, char **s, t_flo *fl)
 {
 	if (x == 5 || x == 6)
 	{
@@ -37,7 +41,8 @@ int parc(int x, char **s, t_flo *fl)
 		write(2, "Error invalid number arqument\n", 30);
 		return (1);
 	}
-	if (fl->nop > 200 || fl->nop == -1 || fl->notepme == -1 || fl->ttd == -1 || fl->tte == -1 || fl->tts == -1)
+	if (fl->nop > 200 || fl->nop == -1 || fl->notepme == -1
+		|| fl->ttd == -1 || fl->tte == -1 || fl->tts == -1)
 	{
 		write(2, "Error invalid inputs\n", 21);
 		return (1);
@@ -45,14 +50,15 @@ int parc(int x, char **s, t_flo *fl)
 	return (0);
 }
 
-void *routine(void *h)
+void	*routine(void *h)
 {
 	t_thr thre;
 	//int ptime;
 
 	thre = *(t_thr *)h;
 	thre.fttd = thre.fl->ttd;
-	while (thre.fl->notepme != 0)
+	thre.notep = thre.fl->notepme;
+	while (thre.notep != 0)
 	{
 		if (pickfork(&thre) || sleaping(&thre) || thinking(&thre))
 		{
@@ -64,14 +70,15 @@ void *routine(void *h)
 		pickfork(&thre);
 		sleaping(&thre);
 		thinking(&thre);
+		thre.notep--;
 	}
 	return (0);
 }
 
-void excu(t_flo *fl)
+void	excu(t_flo *fl)
 {
-	int i;
-	t_thr *thr;
+	int		i;
+	t_thr	*thr;
 
 	i = 0;
 	thr = malloc(fl->nop * sizeof(t_thr));
@@ -97,10 +104,10 @@ void excu(t_flo *fl)
 	free(fl->mutex);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_flo flo;
-	int p;
+	t_flo	flo;
+	int		p;
 
 	p = parc(ac, av, &flo);
 	if (p == 0)

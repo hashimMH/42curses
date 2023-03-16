@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:49 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/16 18:41:05 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/16 21:00:07 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_thr
 {
 	pthread_mutex_t	*forkr;
 	pthread_mutex_t	*forkl;
+	int				notep;
 	int				index;
 	int				fttd;
 	pthread_t		th;
@@ -62,5 +63,6 @@ int			thinking(t_thr *flo);
 int			checkdead(t_thr *flo);
 void		printing(t_thr *flo, t_pets str);
 void		exprinting(t_thr *flo, t_pets str, int ptime);
+void		psleep(t_thr *flo, long long ctime, long long time);
 
 #endif
