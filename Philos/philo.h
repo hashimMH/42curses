@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:49 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/16 21:00:07 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/17 19:27:08 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_flo
 	int				notepme;
 	long long		time;
 	int				alive;
+	int				*froks;
+	int				*frokss;
 	pthread_mutex_t	*mutex;
 	pthread_mutex_t	dead;
 	pthread_mutex_t	printing;
@@ -38,6 +40,10 @@ typedef struct s_thr
 {
 	pthread_mutex_t	*forkr;
 	pthread_mutex_t	*forkl;
+	int				*fright;
+	int				*fleft;
+	int				*frights;
+	int				*flefts;
 	int				notep;
 	int				index;
 	int				fttd;
@@ -63,6 +69,9 @@ int			thinking(t_thr *flo);
 int			checkdead(t_thr *flo);
 void		printing(t_thr *flo, t_pets str);
 void		exprinting(t_thr *flo, t_pets str, int ptime);
-void		psleep(t_thr *flo, long long ctime, long long time);
+int			psleep(t_thr *flo, long long time);
+void		forkdis(t_thr *flo);
+void		mutexdis(t_thr *thre);
+void		forkdiss(t_thr *flo);
 
 #endif

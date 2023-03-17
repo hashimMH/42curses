@@ -6,19 +6,23 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:00 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/16 21:27:41 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/17 20:40:07 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	psleep(t_thr *flo, long long ctime, long long time)
+int	psleep(t_thr *flo, long long time)
 {
+	long long	ctime;
+
+	ctime = get_time();
 	while (get_time() - ctime < time)
 	{
 		if (checkdead(flo))
-			break ;
+			return (1);
 	}
+	return (0);
 }
 
 int	parc(int x, char **s, t_flo *fl)
@@ -52,24 +56,25 @@ int	parc(int x, char **s, t_flo *fl)
 
 void	*routine(void *h)
 {
-	t_thr thre;
-	//int ptime;
+	t_thr	thre;
 
 	thre = *(t_thr *)h;
 	thre.fttd = thre.fl->ttd;
 	thre.notep = thre.fl->notepme;
+	forkdis(&thre);
+	mutexdis(&thre);
+	if (thre.fl->nop == 1)
+	{
+		psleep(&thre, thre.fttd + 100);
+		return (0);
+	}
 	while (thre.notep != 0)
 	{
 		if (pickfork(&thre) || sleaping(&thre) || thinking(&thre))
-		{
-			
-			// ptime = get_time() - thre.fl->time;
-			// printf("[%d] philo %d is dead\n", ptime, thre.index);
-			break;
-		}
-		pickfork(&thre);
-		sleaping(&thre);
-		thinking(&thre);
+			return (0);
+		// pickfork(&thre);
+		// sleaping(&thre);
+		// thinking(&thre);
 		thre.notep--;
 	}
 	return (0);
@@ -112,11 +117,15 @@ int	main(int ac, char **av)
 	p = parc(ac, av, &flo);
 	if (p == 0)
 	{
+		flo.froks = malloc(flo.nop * sizeof(int));
+		flo.frokss = malloc(flo.nop * sizeof(int));
 		pthread_mutex_init(&flo.dead, NULL);
 		pthread_mutex_init(&flo.printing, NULL);
 		excu(&flo);
 		pthread_mutex_destroy(&flo.dead);
 		pthread_mutex_destroy(&flo.printing);
+		free(flo.froks);
+		free(flo.frokss);
 		return (0);
 	}
 	return (1);

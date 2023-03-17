@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 19:48:55 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/16 18:39:02 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/17 19:47:39 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	exprinting(t_thr *flo, t_pets str, int ptime)
 	if (str == ptakefork && !flo->fl->alive)
 	{
 		printf("[%d] philo %d take the fork\n", ptime, flo->index);
+		// printf("[%d] philo %d take the fork\n", ptime, flo->index);
 		pthread_mutex_unlock(&flo->fl->printing);
 	}
 	if (str == psleeping && !flo->fl->alive)

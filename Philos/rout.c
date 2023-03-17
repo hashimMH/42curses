@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 17:04:37 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/16 21:00:51 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/17 21:04:11 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,26 @@
 int	pickfork(t_thr *thre)
 {
 
-	if (thre->fl->alive)
-		return (1);
-	if (checkdead(thre) || thre->fl->alive)
-		return (1);
-	if (thre->index == thre->fl->nop)
+	// if (thre->fl->alive)
+	// 	return (1);
+	// if (checkdead(thre) || thre->fl->alive)
+	// 	return (1);
+	while (*thre->frights != 0 || *thre->flefts != 0)
 	{
-		thre->forkr = &thre->fl->mutex[thre->index - 1];
-		thre->forkl = &thre->fl->mutex[0];
+		if (psleep(thre, 2))
+			return (1);
 	}
-	else
+	while (*thre->fright == thre->index || *thre->fleft == thre->index)
 	{
-		thre->forkl = &thre->fl->mutex[thre->index - 1];
-		thre->forkr = &thre->fl->mutex[thre->index];
+		if (psleep(thre, 2))
+			return (1);
 	}
 	pthread_mutex_lock(thre->forkl);
 	pthread_mutex_lock(thre->forkr);
+	*thre->fright = thre->index;
+	*thre->fleft = thre->index;
+	*thre->frights = thre->index;
+	*thre->flefts = thre->index;
 	printing(thre, ptakefork);
 	eating(thre);
 	pthread_mutex_unlock(thre->forkl);
@@ -42,16 +46,15 @@ int	eating(t_thr *thre)
 {
 	int	ptime;
 
-	if (thre->fl->alive)
-		return (1);
-
-	if (checkdead(thre) || thre->fl->alive)
-		return (1);
+	// if (checkdead(thre) || thre->fl->alive)
+	// 	return (1);
 	ptime = get_time() - thre->fl->time;
 	thre->fttd = ptime + thre->fl->ttd;
 	printing(thre, peating);
 	// printf("[%d] philo %d is eating\n", ptime, thre->index);
-	psleep(thre, get_time(), thre->fl->tte);
+	psleep(thre, thre->fl->tte);
+	*thre->frights = 0;
+	*thre->flefts = 0;
 	return (0);
 }
 
@@ -59,15 +62,15 @@ int	sleaping(t_thr *flo)
 {
 	// int	ptime;
 
-	if (flo->fl->alive)
-		return (1);
+	// if (flo->fl->alive)  // check race condition
+	// 	return (1);
 
-	if (checkdead(flo) || flo->fl->alive)
-		return (1);
+	// if (checkdead(flo) || flo->fl->alive)
+	// 	return (1);
 	// ptime = get_time() - flo->fl->time;
 	printing(flo, psleeping);
 	// printf("[%d] philo %d is sleeping\n", ptime, flo->index);
-	psleep(flo, get_time(), flo->fl->tts);
+	psleep(flo, flo->fl->tts);
 	return (0);
 }
 
