@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:00 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/17 20:40:07 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 14:40:29 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	psleep(t_thr *flo, long long time)
 	{
 		if (checkdead(flo))
 			return (1);
+		usleep(100);
 	}
 	return (0);
 }

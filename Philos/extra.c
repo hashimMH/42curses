@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:04:20 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/17 20:43:53 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 14:13:40 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	forkdis(t_thr *flo)
 {
-
 	if (flo->index == flo->fl->nop)
 	{
 		flo->fright = &flo->fl->froks[flo->index - 1];

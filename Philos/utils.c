@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 19:48:55 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/17 19:47:39 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 14:23:44 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	printing(t_thr *flo, t_pets str)
 	{
 		flo->fl->alive = 1;
 		printf("[%d] philo %d is dead\n", ptime, flo->index);
+		printf("[%d] philo ttd %d  ttd %d tte %d tts %d\n", ptime, flo->fttd, flo->fl->ttd, flo->fl->tte, flo->fl->tts);
 		pthread_mutex_unlock(&flo->fl->printing);
 		return ;
 	}
