@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:49 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 20:31:47 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 17:21:43 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,7 @@ void		forkdis(t_thr *flo);
 void		mutexdis(t_thr *thre);
 void		forkdiss(t_thr *flo);
 void		forksarr(t_flo *flo);
+int 		readfork(t_thr *flo);
+int 		readforks(t_thr *flo);
 
 #endif

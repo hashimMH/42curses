@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:00 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 20:31:54 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 18:03:44 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	excu(t_flo *fl)
 
 	i = 0;
 	thr = malloc(fl->nop * sizeof(t_thr));
-	fl->mutex = malloc(fl->nop * sizeof(int));
+	fl->mutex = malloc(fl->nop * sizeof(pthread_mutex_t));
 	while (i < fl->nop)
 	{
 		pthread_mutex_init(&fl->mutex[i], NULL);
@@ -100,6 +100,11 @@ void	excu(t_flo *fl)
 	{
 		if (pthread_join(thr[i].th, NULL) != 0)
 			perror("Error");
+		i++;
+	}
+	i = 0;
+	while (i < fl->nop)
+	{
 		pthread_mutex_destroy(&fl->mutex[i]);
 		i++;
 	}

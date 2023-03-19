@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 17:04:37 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 20:32:57 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 18:02:39 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	pickfork(t_thr *thre)
 {
-	while (*thre->frights != 0 || *thre->flefts != 0)
+	while (readforks(thre))
 	{
 		if (psleep(thre, 2))
 			return (1);
 	}
-	while (*thre->fright == thre->index || *thre->fleft == thre->index)
+	while (readfork(thre))
 	{
 		if (psleep(thre, 2))
 			return (1);
@@ -56,8 +56,12 @@ int	eating(t_thr *thre)
 	printing(thre, peating);
 	if (psleep(thre, thre->fl->tte))
 		return (1);
+	pthread_mutex_lock(&h);
 	*thre->frights = 0;
+	pthread_mutex_unlock(&h);
+	pthread_mutex_lock(&h);
 	*thre->flefts = 0;
+	pthread_mutex_unlock(&h);
 	return (0);
 }
 
@@ -83,8 +87,13 @@ int	checkdead(t_thr *flo)
 {
 	int	ptime;
 
+	pthread_mutex_lock(&flo->fl->fdist);
 	if (flo->fl->alive)
+	{
+		pthread_mutex_unlock(&flo->fl->fdist);
 		return (1);
+	}
+	pthread_mutex_unlock(&flo->fl->fdist);
 	ptime = get_time() - flo->fl->time;
 	if (ptime >= flo->fttd)
 	{
