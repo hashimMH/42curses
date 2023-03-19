@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:00 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 19:21:52 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 23:41:53 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,7 @@ void	excu(t_flo *fl)
 	i = 0;
 	thr = malloc(fl->nop * sizeof(t_thr));
 	fl->mutex = malloc(fl->nop * sizeof(pthread_mutex_t));
-	while (i < fl->nop)
-	{
-		pthread_mutex_init(&fl->mutex[i], NULL);
-		i++;
-	}
-	i = 0;
+	mut_init(fl);
 	while (i < fl->nop)
 	{
 		thr[i].index = i + 1;
@@ -107,12 +102,7 @@ void	excu(t_flo *fl)
 			perror("Error");
 		i++;
 	}
-	i = 0;
-	while (i < fl->nop)
-	{
-		pthread_mutex_destroy(&fl->mutex[i]);
-		i++;
-	}
+	mut_dest(fl);
 	free(thr);
 	free(fl->mutex);
 }
@@ -128,13 +118,7 @@ int	main(int ac, char **av)
 		flo.froks = malloc(flo.nop * sizeof(int));
 		flo.frokss = malloc(flo.nop * sizeof(int));
 		forksarr(&flo);
-		pthread_mutex_init(&flo.h, NULL);
-		pthread_mutex_init(&flo.fdist, NULL);
-		pthread_mutex_init(&flo.printing, NULL);
 		excu(&flo);
-		pthread_mutex_destroy(&flo.printing);
-		pthread_mutex_destroy(&flo.fdist);
-		pthread_mutex_destroy(&flo.h);
 		free(flo.froks);
 		free(flo.frokss);
 		return (0);

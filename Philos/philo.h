@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:49 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 19:18:26 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 23:37:10 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_flo
 	int				*frokss;
 	pthread_mutex_t	*mutex;
 	pthread_mutex_t	fdist;
-	pthread_mutex_t h;
+	pthread_mutex_t	h;
 	pthread_mutex_t	printing;
 }	t_flo;
 
@@ -75,7 +75,9 @@ void		forkdis(t_thr *flo);
 void		mutexdis(t_thr *thre);
 void		forkdiss(t_thr *flo);
 void		forksarr(t_flo *flo);
-int 		readfork(t_thr *flo);
-int 		readforks(t_thr *flo);
+int			readfork(t_thr *flo);
+int			readforks(t_thr *flo);
+void		mut_init(t_flo *flo);
+void		mut_dest(t_flo *flo);
 
 #endif
