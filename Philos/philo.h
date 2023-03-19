@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:49 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 16:04:16 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:50:00 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ int			psleep(t_thr *flo, long long time);
 void		forkdis(t_thr *flo);
 void		mutexdis(t_thr *thre);
 void		forkdiss(t_thr *flo);
+void		forksarr(t_flo *flo);
 
 #endif
