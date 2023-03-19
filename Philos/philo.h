@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:49 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/17 19:27:08 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:04:16 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_flo
 	int				*froks;
 	int				*frokss;
 	pthread_mutex_t	*mutex;
-	pthread_mutex_t	dead;
+	pthread_mutex_t	fdist;
 	pthread_mutex_t	printing;
 }	t_flo;
 

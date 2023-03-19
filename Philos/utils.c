@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 19:48:55 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 14:23:44 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 15:01:07 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ long long	get_time(void)
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	// printf("time in miliiseconds :  %lld\n",
-	// 	(((long long)tv.tv_sec) * 1000) + (tv.tv_usec / 1000));
 	return ((((long long)tv.tv_sec) * 1000) + (tv.tv_usec / 1000));
 }
 
@@ -66,7 +64,6 @@ void	printing(t_thr *flo, t_pets str)
 	{
 		flo->fl->alive = 1;
 		printf("[%d] philo %d is dead\n", ptime, flo->index);
-		printf("[%d] philo ttd %d  ttd %d tte %d tts %d\n", ptime, flo->fttd, flo->fl->ttd, flo->fl->tte, flo->fl->tts);
 		pthread_mutex_unlock(&flo->fl->printing);
 		return ;
 	}
@@ -88,7 +85,7 @@ void	exprinting(t_thr *flo, t_pets str, int ptime)
 	if (str == ptakefork && !flo->fl->alive)
 	{
 		printf("[%d] philo %d take the fork\n", ptime, flo->index);
-		// printf("[%d] philo %d take the fork\n", ptime, flo->index);
+		printf("[%d] philo %d take the fork\n", ptime, flo->index);
 		pthread_mutex_unlock(&flo->fl->printing);
 	}
 	if (str == psleeping && !flo->fl->alive)

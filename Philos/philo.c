@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:00 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 14:40:29 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:09:29 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,6 @@ void	*routine(void *h)
 	{
 		if (pickfork(&thre) || sleaping(&thre) || thinking(&thre))
 			return (0);
-		// pickfork(&thre);
-		// sleaping(&thre);
-		// thinking(&thre);
 		thre.notep--;
 	}
 	return (0);
@@ -120,11 +117,11 @@ int	main(int ac, char **av)
 	{
 		flo.froks = malloc(flo.nop * sizeof(int));
 		flo.frokss = malloc(flo.nop * sizeof(int));
-		pthread_mutex_init(&flo.dead, NULL);
+		pthread_mutex_init(&flo.fdist, NULL);
 		pthread_mutex_init(&flo.printing, NULL);
 		excu(&flo);
-		pthread_mutex_destroy(&flo.dead);
 		pthread_mutex_destroy(&flo.printing);
+		pthread_mutex_destroy(&flo.fdist);
 		free(flo.froks);
 		free(flo.frokss);
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:04:20 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 14:13:40 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:10:55 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ void	forkdis(t_thr *flo)
 		flo->fleft = &flo->fl->froks[flo->index - 1];
 		flo->fright = &flo->fl->froks[flo->index];
 	}
+	pthread_mutex_lock(&flo->fl->fdist);
 	*flo->fright = 0;
 	*flo->fleft = 0;
 	forkdiss(flo);
+	pthread_mutex_unlock(&flo->fl->fdist);
 }
 
 void	forkdiss(t_thr *flo)
 {
-
 	if (flo->index == flo->fl->nop)
 	{
 		flo->frights = &flo->fl->frokss[flo->index - 1];
