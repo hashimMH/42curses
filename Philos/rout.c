@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 17:04:37 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 16:59:12 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 20:32:57 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,18 @@ int	pickfork(t_thr *thre)
 	}
 	pthread_mutex_lock(thre->forkl);
 	pthread_mutex_lock(thre->forkr);
+	pthread_mutex_lock(&h);
 	*thre->fright = thre->index;
+	pthread_mutex_unlock(&h);
+	pthread_mutex_lock(&h);
 	*thre->fleft = thre->index;
+	pthread_mutex_unlock(&h);
+	pthread_mutex_lock(&h);
 	*thre->frights = thre->index;
+	pthread_mutex_unlock(&h);
+	pthread_mutex_lock(&h);
 	*thre->flefts = thre->index;
+	pthread_mutex_unlock(&h);
 	printing(thre, ptakefork);
 	eating(thre);
 	pthread_mutex_unlock(thre->forkl);
@@ -41,7 +49,7 @@ int	eating(t_thr *thre)
 {
 	int	ptime;
 
-	if (checkdead(thre) || thre->fl->alive)
+	if (checkdead(thre))
 		return (1);
 	ptime = get_time() - thre->fl->time;
 	thre->fttd = ptime + thre->fl->ttd;
@@ -55,7 +63,7 @@ int	eating(t_thr *thre)
 
 int	sleaping(t_thr *flo)
 {
-	if (checkdead(flo) || flo->fl->alive)
+	if (checkdead(flo))
 		return (1);
 	printing(flo, psleeping);
 	if (psleep(flo, flo->fl->tts))
@@ -65,7 +73,7 @@ int	sleaping(t_thr *flo)
 
 int	thinking(t_thr *flo)
 {
-	if (checkdead(flo) || flo->fl->alive)
+	if (checkdead(flo))
 		return (1);
 	printing(flo, pthinking);
 	return (0);
@@ -75,6 +83,8 @@ int	checkdead(t_thr *flo)
 {
 	int	ptime;
 
+	if (flo->fl->alive)
+		return (1);
 	ptime = get_time() - flo->fl->time;
 	if (ptime >= flo->fttd)
 	{

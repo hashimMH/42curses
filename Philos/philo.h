@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:49 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 16:50:00 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 20:31:47 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <limits.h>
 # include <pthread.h>
 # include <sys/time.h>
+
+pthread_mutex_t h;
 
 typedef struct s_flo
 {

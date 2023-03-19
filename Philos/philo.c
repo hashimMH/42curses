@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:00 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 16:50:39 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 20:31:54 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,11 +118,13 @@ int	main(int ac, char **av)
 		flo.froks = malloc(flo.nop * sizeof(int));
 		flo.frokss = malloc(flo.nop * sizeof(int));
 		forksarr(&flo);
+		pthread_mutex_init(&h, NULL);
 		pthread_mutex_init(&flo.fdist, NULL);
 		pthread_mutex_init(&flo.printing, NULL);
 		excu(&flo);
 		pthread_mutex_destroy(&flo.printing);
 		pthread_mutex_destroy(&flo.fdist);
+		pthread_mutex_destroy(&h);
 		free(flo.froks);
 		free(flo.frokss);
 		return (0);

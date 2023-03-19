@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 19:48:55 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 15:01:07 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 20:28:35 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ void	printing(t_thr *flo, t_pets str)
 	ptime = get_time() - flo->fl->time;
 	if (str == pdead && !flo->fl->alive)
 	{
+		pthread_mutex_lock(&flo->fl->fdist);
 		flo->fl->alive = 1;
+		pthread_mutex_unlock(&flo->fl->fdist);
 		printf("[%d] philo %d is dead\n", ptime, flo->index);
 		pthread_mutex_unlock(&flo->fl->printing);
 		return ;
