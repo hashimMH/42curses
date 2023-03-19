@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 17:04:37 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 16:13:07 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:59:12 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,13 @@ int	eating(t_thr *thre)
 {
 	int	ptime;
 
+	if (checkdead(thre) || thre->fl->alive)
+		return (1);
 	ptime = get_time() - thre->fl->time;
 	thre->fttd = ptime + thre->fl->ttd;
 	printing(thre, peating);
-	psleep(thre, thre->fl->tte);
+	if (psleep(thre, thre->fl->tte))
+		return (1);
 	*thre->frights = 0;
 	*thre->flefts = 0;
 	return (0);
@@ -55,7 +58,8 @@ int	sleaping(t_thr *flo)
 	if (checkdead(flo) || flo->fl->alive)
 		return (1);
 	printing(flo, psleeping);
-	psleep(flo, flo->fl->tts);
+	if (psleep(flo, flo->fl->tts))
+		return (1);
 	return (0);
 }
 
