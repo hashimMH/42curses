@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 17:04:37 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 18:02:39 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 19:21:11 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ int	pickfork(t_thr *thre)
 	}
 	pthread_mutex_lock(thre->forkl);
 	pthread_mutex_lock(thre->forkr);
-	pthread_mutex_lock(&h);
+	pthread_mutex_lock(&thre->fl->h);
 	*thre->fright = thre->index;
-	pthread_mutex_unlock(&h);
-	pthread_mutex_lock(&h);
+	pthread_mutex_unlock(&thre->fl->h);
+	pthread_mutex_lock(&thre->fl->h);
 	*thre->fleft = thre->index;
-	pthread_mutex_unlock(&h);
-	pthread_mutex_lock(&h);
+	pthread_mutex_unlock(&thre->fl->h);
+	pthread_mutex_lock(&thre->fl->h);
 	*thre->frights = thre->index;
-	pthread_mutex_unlock(&h);
-	pthread_mutex_lock(&h);
+	pthread_mutex_unlock(&thre->fl->h);
+	pthread_mutex_lock(&thre->fl->h);
 	*thre->flefts = thre->index;
-	pthread_mutex_unlock(&h);
+	pthread_mutex_unlock(&thre->fl->h);
 	printing(thre, ptakefork);
 	eating(thre);
 	pthread_mutex_unlock(thre->forkl);
@@ -56,12 +56,12 @@ int	eating(t_thr *thre)
 	printing(thre, peating);
 	if (psleep(thre, thre->fl->tte))
 		return (1);
-	pthread_mutex_lock(&h);
+	pthread_mutex_lock(&thre->fl->h);
 	*thre->frights = 0;
-	pthread_mutex_unlock(&h);
-	pthread_mutex_lock(&h);
+	pthread_mutex_unlock(&thre->fl->h);
+	pthread_mutex_lock(&thre->fl->h);
 	*thre->flefts = 0;
-	pthread_mutex_unlock(&h);
+	pthread_mutex_unlock(&thre->fl->h);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:49 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 17:21:43 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 19:18:26 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <limits.h>
 # include <pthread.h>
 # include <sys/time.h>
-
-pthread_mutex_t h;
 
 typedef struct s_flo
 {
@@ -35,6 +33,7 @@ typedef struct s_flo
 	int				*frokss;
 	pthread_mutex_t	*mutex;
 	pthread_mutex_t	fdist;
+	pthread_mutex_t h;
 	pthread_mutex_t	printing;
 }	t_flo;
 

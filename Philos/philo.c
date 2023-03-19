@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:00 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 18:03:44 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/19 19:21:52 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,11 @@ void	excu(t_flo *fl)
 	while (i < fl->nop)
 	{
 		pthread_mutex_init(&fl->mutex[i], NULL);
+		i++;
+	}
+	i = 0;
+	while (i < fl->nop)
+	{
 		thr[i].index = i + 1;
 		thr[i].fl = fl;
 		if (pthread_create(&((thr[i]).th), NULL, &routine, &thr[i]) != 0)
@@ -123,13 +128,13 @@ int	main(int ac, char **av)
 		flo.froks = malloc(flo.nop * sizeof(int));
 		flo.frokss = malloc(flo.nop * sizeof(int));
 		forksarr(&flo);
-		pthread_mutex_init(&h, NULL);
+		pthread_mutex_init(&flo.h, NULL);
 		pthread_mutex_init(&flo.fdist, NULL);
 		pthread_mutex_init(&flo.printing, NULL);
 		excu(&flo);
 		pthread_mutex_destroy(&flo.printing);
 		pthread_mutex_destroy(&flo.fdist);
-		pthread_mutex_destroy(&h);
+		pthread_mutex_destroy(&flo.h);
 		free(flo.froks);
 		free(flo.frokss);
 		return (0);
