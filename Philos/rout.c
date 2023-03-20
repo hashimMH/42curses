@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 17:04:37 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 19:21:11 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/20 16:31:49 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,19 @@
 
 int	pickfork(t_thr *thre)
 {
-	while (readforks(thre))
+	while (readfork(thre))
 	{
 		if (psleep(thre, 2))
 			return (1);
 	}
-	while (readfork(thre))
+	while (readforks(thre))
 	{
 		if (psleep(thre, 2))
 			return (1);
 	}
 	pthread_mutex_lock(thre->forkl);
 	pthread_mutex_lock(thre->forkr);
-	pthread_mutex_lock(&thre->fl->h);
-	*thre->fright = thre->index;
-	pthread_mutex_unlock(&thre->fl->h);
-	pthread_mutex_lock(&thre->fl->h);
-	*thre->fleft = thre->index;
-	pthread_mutex_unlock(&thre->fl->h);
-	pthread_mutex_lock(&thre->fl->h);
-	*thre->frights = thre->index;
-	pthread_mutex_unlock(&thre->fl->h);
-	pthread_mutex_lock(&thre->fl->h);
-	*thre->flefts = thre->index;
-	pthread_mutex_unlock(&thre->fl->h);
+	lock_init(thre);
 	printing(thre, ptakefork);
 	eating(thre);
 	pthread_mutex_unlock(thre->forkl);

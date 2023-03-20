@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 17:16:27 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 23:40:34 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/20 16:39:17 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,3 +74,18 @@ void	mut_dest(t_flo *flo)
 	pthread_mutex_destroy(&flo->h);
 }
 
+void	lock_init(t_thr *thre)
+{
+	pthread_mutex_lock(&thre->fl->h);
+	*thre->fright = thre->index;
+	pthread_mutex_unlock(&thre->fl->h);
+	pthread_mutex_lock(&thre->fl->h);
+	*thre->fleft = thre->index;
+	pthread_mutex_unlock(&thre->fl->h);
+	pthread_mutex_lock(&thre->fl->h);
+	*thre->frights = thre->index;
+	pthread_mutex_unlock(&thre->fl->h);
+	pthread_mutex_lock(&thre->fl->h);
+	*thre->flefts = thre->index;
+	pthread_mutex_unlock(&thre->fl->h);
+}

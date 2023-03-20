@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:32:49 by hmohamed          #+#    #+#             */
-/*   Updated: 2023/03/19 23:37:10 by hmohamed         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:49:53 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ int			readfork(t_thr *flo);
 int			readforks(t_thr *flo);
 void		mut_init(t_flo *flo);
 void		mut_dest(t_flo *flo);
+void		lock_init(t_thr *thre);
 
 #endif
